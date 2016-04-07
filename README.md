@@ -1,2 +1,2 @@
 # World-of-Clickers
-My first clicker game
+My first real clicker game
