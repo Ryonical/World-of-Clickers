@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=clicker2\ monsterKills
+comment0.target=TheBoss(WorldOfClickers,\ int)
+comment0.text=\r\n\ This\ is\ the\ constructer\r\n\ pre\ none\r\n\ pram\ monsterKills\r\n\ return\ none\r\n\ post\ none\r\n
+comment1.params=
+comment1.target=void\ run()
+comment1.text=\r\n\ This\ is\ the\ boss\ fight\r\n\ pre\ none\r\n\ pram\ none\r\n\ return\ none\r\n\ post\ none\r\n
+numComments=2
