@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=clicker2\ monsterKills
-comment0.target=TheBoss(WorldOfClickers,\ int)
+comment0.params=clicker2\ monsterKills\ timerDelete
+comment0.target=TheBoss(WorldOfClickers,\ int,\ java.util.Timer)
 comment0.text=\r\n\ This\ is\ the\ constructer\r\n\ pre\ none\r\n\ pram\ monsterKills\r\n\ return\ none\r\n\ post\ none\r\n
 comment1.params=
 comment1.target=void\ run()

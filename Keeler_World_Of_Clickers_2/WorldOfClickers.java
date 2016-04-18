@@ -29,11 +29,10 @@ public class WorldOfClickers extends JFrame
     
     //damage finals
     public final double DAMAGE_INCREASE = 1.23;//used to upgrade damage
-    public final double LOW_DAMAGE_INCREASE = 4;//used to upgrade damage
     public final double HIGH_DAMAGE_INCREASE = 5;//used to upgrade damage
-    
-    //gold finals
     public final double UPGRADE_COST_INCREASE = 1.25;//this is how much more gold to upgrade damage
+    //gold finals
+    public final double PROGRESS_GOLD = 1.5;//this is how much mor you make when you go to the next level
     public final int UPGRADE_COST_IF = 4;//this will be used for if's
     
     
@@ -60,7 +59,6 @@ public class WorldOfClickers extends JFrame
     private boolean myBossFight;//checks to see if you are in a boss fight
     private boolean myBossKill;//checks to see if boss was killed
     private int myMonsterKills;//this will let you fight the boss if you have atleast 5 kills
-    private int myBossAttacks;//this gives you 5 attacks
     
     /**
     * This will construct WorldOfClickers.
@@ -83,7 +81,7 @@ public class WorldOfClickers extends JFrame
         myHaveIssy = false;
         myHaveRyonical = false;
         //gold
-        myTotalGold = 0;
+        myTotalGold = 100;
         myGoldGain = 1;
         myDamageUpgradeCost = 5;
         
@@ -91,7 +89,6 @@ public class WorldOfClickers extends JFrame
         myBossFight = false;
         myBossKill = false;
         myMonsterKills = 0;
-        myBossAttacks = 5;
     }//ends constructer
     
     
@@ -273,7 +270,6 @@ public class WorldOfClickers extends JFrame
     */
     public double attack()
     {
-        
         myMonsterHealth -= myAttackDamage;
         return myMonsterHealth;
     }//ends attack
@@ -397,7 +393,7 @@ public class WorldOfClickers extends JFrame
             }
             else
             {
-                myGoldGain *= UPGRADE_COST_INCREASE;
+                myGoldGain *= PROGRESS_GOLD;
             }
             myMonsterKills = 0;
             myBaseMonsterHealth *= 2;

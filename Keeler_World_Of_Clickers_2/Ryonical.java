@@ -8,8 +8,8 @@ import java.util.*;
 */
 public class Ryonical implements Ally
 {
-    public final double MYDAMAGEINCREACE = 1.23;
-    public final double MYCOSTINCREACE = 1.25;
+    public final double MY_DAMAGE_INCREACE = 1.23;
+    public final double MY_COST_INCREACE = 1.25;
     private ArrayList <Double> myDamage;
     private ArrayList <Integer> myCost;
     /**
@@ -23,8 +23,9 @@ public class Ryonical implements Ally
     {
         myDamage = new ArrayList<Double>();
         myCost = new ArrayList<Integer>();
-        myDamage.add((Double)1000.0);
-        myCost.add((Integer)20000);
+        myDamage.add((Double)((100/MY_DAMAGE_INCREACE) / 4));//this is how much damage 
+        //it starts at I want 100 dps and it attacks 4 times a second
+        myCost.add((Integer)1000);//this is how much it costs at the begining
     }//ends constructer
     
     /**
@@ -71,9 +72,9 @@ public class Ryonical implements Ally
              }
              else
              {
-                 myDamage.add(myDamage.get((myDamage.size() - 1)).doubleValue() * MYDAMAGEINCREACE);
+                 myDamage.add(myDamage.get((myDamage.size() - 1)).doubleValue() * MY_DAMAGE_INCREACE);
              }
-             myCost.add((int)(myCost.get((myCost.size() - 1)).intValue() * MYCOSTINCREACE));
+             myCost.add((int)(myCost.get((myCost.size() - 1)).intValue() * MY_COST_INCREACE));
              clicker.setGold(gold);
              clicker.setRyonical(true);
          }//ends if

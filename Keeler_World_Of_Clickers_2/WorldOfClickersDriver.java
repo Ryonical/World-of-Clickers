@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.*;
 import java.util.*;
 import java.lang.Thread;
+import java.text.DecimalFormat;
 /**
  * This will drive world clicker 2.
  * 
@@ -17,15 +18,14 @@ public class WorldOfClickersDriver extends JFrame
     private JButton jbtUpgrade = new JButton("Upgrade");
     private JButton jbtUpgradeAll = new JButton("Upgrade All");
     private JButton jbtBob = new JButton("Bob Powers");
-    private JButton jbtissy = new JButton("issy");
+    private JButton jbtIssy = new JButton("Issy");
     private JButton jbtRyonical = new JButton("Ryonical the destroyer");
     private JButton jbtBoss = new JButton("Boss");
     private JButton jbtProgress = new JButton("Progress");
     private JButton jbtDegress = new JButton("Go Back");
     public static void main(String [] args)
     {
-        
-        final int ATTACKSPEED = 500; //sets the attack speed
+        final int ATTACKSPEED = 250; //sets the attack speed
         WorldOfClickers clicker = new WorldOfClickers();
         Bob bob = new Bob();
         Issy issy = new Issy();
@@ -45,7 +45,8 @@ public class WorldOfClickersDriver extends JFrame
     public void activate(WorldOfClickers clicker, Bob bob, Issy issy, Ryonical ryonical, MessagePanel messagePanel,
     JTextField jftMessage, EasterEggFirst firstEgg, EasterEggSecond secondEgg)
     {
-        
+        //to remove the exess 0 off the monster health
+        DecimalFormat format = new DecimalFormat("0.#");
         
         //buttons
         JButton jbtAttack = new JButton("Attack");
@@ -114,7 +115,7 @@ public class WorldOfClickersDriver extends JFrame
                 myRyonicalUpgrade = ryonical.getCost();
                 //gets gold
                 myTotalGold = clicker.getTotalGold();
-                messagePanel.setMessage("The monster has " + myMonsterHealth + " health You have " + myTotalGold + " gold" + 
+                messagePanel.setMessage("The monster has " + format.format(myMonsterHealth) + " health You have " + myTotalGold + " gold" + 
                 " The next upgrade costs " + myDamageUpgradeCost + " gold Bob costs " + myBobUpgrade + " gold, issy costs " +
                 myissyUpgrade + " gold, and Ryonical costs " + myRyonicalUpgrade + " gold.");
                 jftMessage.requestFocusInWindow();
@@ -147,7 +148,7 @@ public class WorldOfClickersDriver extends JFrame
                 myRyonicalUpgrade = ryonical.getCost();
                 //gets gold
                 myTotalGold = clicker.getTotalGold();
-                messagePanel.setMessage("The monster has " + myMonsterHealth + " health You have " + myTotalGold + " gold" + 
+                messagePanel.setMessage("The monster has " + format.format(myMonsterHealth) + " health You have " + myTotalGold + " gold" + 
                 " The next upgrade costs " + myDamageUpgradeCost + " gold Bob costs " + myBobUpgrade + " gold, Issy costs " +
                 myissyUpgrade + " gold, and Ryonical costs " + myRyonicalUpgrade + " gold.");
                 jftMessage.requestFocusInWindow();
@@ -180,7 +181,7 @@ public class WorldOfClickersDriver extends JFrame
                 myRyonicalUpgrade = ryonical.getCost();
                 //gets gold
                 myTotalGold = clicker.getTotalGold();
-                messagePanel.setMessage("The monster has " + myMonsterHealth + " health You have " + myTotalGold + " gold" + 
+                messagePanel.setMessage("The monster has " + format.format(myMonsterHealth) + " health You have " + myTotalGold + " gold" + 
                 " The next upgrade costs " + myDamageUpgradeCost + " gold Bob costs " + myBobUpgrade + " gold, Issy costs " +
                 myissyUpgrade + " gold, and Ryonical costs " + myRyonicalUpgrade + " gold.");
                 jftMessage.requestFocusInWindow();
@@ -213,7 +214,7 @@ public class WorldOfClickersDriver extends JFrame
                 myRyonicalUpgrade = ryonical.getCost();
                 //gets gold
                 myTotalGold = clicker.getTotalGold();
-                messagePanel.setMessage("The monster has " + myMonsterHealth + " health You have " + myTotalGold + " gold" + 
+                messagePanel.setMessage("The monster has " + format.format(myMonsterHealth) + " health You have " + myTotalGold + " gold" + 
                 " The next upgrade costs " + myDamageUpgradeCost + " gold Bob costs " + myBobUpgrade + " gold, Issy costs " +
                 myissyUpgrade + " gold, and Ryonical costs " + myRyonicalUpgrade + " gold.");
                 jftMessage.requestFocusInWindow();
@@ -247,7 +248,7 @@ public class WorldOfClickersDriver extends JFrame
                 myRyonicalUpgrade = ryonical.getCost();
                 //gets gold
                 myTotalGold = clicker.getTotalGold();
-                messagePanel.setMessage("The monster has " + myMonsterHealth + " health You have " + myTotalGold + " gold" + 
+                messagePanel.setMessage("The monster has " + format.format(myMonsterHealth) + " health You have " + myTotalGold + " gold" + 
                 " The next upgrade costs " + myDamageUpgradeCost + " gold Bob costs " + myBobUpgrade + " gold, Issy costs " +
                 myissyUpgrade + " gold, and Ryonical costs " + myRyonicalUpgrade + " gold.");
                 jftMessage.requestFocusInWindow();
@@ -281,7 +282,7 @@ public class WorldOfClickersDriver extends JFrame
                 myRyonicalUpgrade = ryonical.getCost();
                 //gets gold
                 myTotalGold = clicker.getTotalGold();
-                messagePanel.setMessage("The monster has " + myMonsterHealth + " health You have " + myTotalGold + " gold" + 
+                messagePanel.setMessage("The monster has " + format.format(myMonsterHealth) + " health You have " + myTotalGold + " gold" + 
                 " The next upgrade costs " + myDamageUpgradeCost + " gold Bob costs " + myBobUpgrade + " gold, Issy costs " +
                 myissyUpgrade + " gold, and Ryonical costs " + myRyonicalUpgrade + " gold.");
                 jftMessage.requestFocusInWindow();
@@ -309,7 +310,7 @@ public class WorldOfClickersDriver extends JFrame
                     clicker.setHealth(clicker.getMonsterHealth() * 2);
                     //runs the timer
                     java.util.Timer timer2 = new java.util.Timer();
-                    timer2.schedule(new TheBoss(clicker, clicker.getMonsterKills()), 0 , 1000);
+                    timer2.schedule(new TheBoss(clicker, clicker.getMonsterKills(), timer2), 0 , 1000);
                 }
                 
                 
@@ -326,7 +327,7 @@ public class WorldOfClickersDriver extends JFrame
                 myRyonicalUpgrade = ryonical.getCost();
                 //gets gold
                 myTotalGold = clicker.getTotalGold();
-                messagePanel.setMessage("The monster has " + myMonsterHealth + " health You have " + myTotalGold + " gold" + 
+                messagePanel.setMessage("The monster has " + format.format(myMonsterHealth) + " health You have " + myTotalGold + " gold" + 
                 " The next upgrade costs " + myDamageUpgradeCost + " gold Bob costs " + myBobUpgrade + " gold, Issy costs " +
                 myissyUpgrade + " gold, and Ryonical costs " + myRyonicalUpgrade + " gold.");
                 jftMessage.requestFocusInWindow();
@@ -359,7 +360,7 @@ public class WorldOfClickersDriver extends JFrame
                 myRyonicalUpgrade = ryonical.getCost();
                 //gets gold
                 myTotalGold = clicker.getTotalGold();
-                messagePanel.setMessage("The monster has " + myMonsterHealth + " health You have " + myTotalGold + " gold" + 
+                messagePanel.setMessage("The monster has " + format.format(myMonsterHealth) + " health You have " + myTotalGold + " gold" + 
                 " The next upgrade costs " + myDamageUpgradeCost + " gold Bob costs " + myBobUpgrade + " gold, Issy costs " +
                 myissyUpgrade + " gold, and Ryonical costs " + myRyonicalUpgrade + " gold.");
                 jftMessage.requestFocusInWindow();
@@ -392,7 +393,7 @@ public class WorldOfClickersDriver extends JFrame
                 myRyonicalUpgrade = ryonical.getCost();
                 //gets gold
                 myTotalGold = clicker.getTotalGold();
-                messagePanel.setMessage("The monster has " + myMonsterHealth + " health You have " + myTotalGold + " gold" + 
+                messagePanel.setMessage("The monster has " + format.format(myMonsterHealth) + " health You have " + myTotalGold + " gold" + 
                 " The next upgrade costs " + myDamageUpgradeCost + " gold Bob costs " + myBobUpgrade + " gold, Issy costs " +
                 myissyUpgrade + " gold, and Ryonical costs " + myRyonicalUpgrade + " gold.");
                 jftMessage.requestFocusInWindow();

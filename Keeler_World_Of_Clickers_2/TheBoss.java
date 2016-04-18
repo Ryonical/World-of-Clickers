@@ -19,7 +19,9 @@ public class TheBoss extends TimerTask
     private int myTimeLeft;
     private int myMonsterKills;
     private double myMonsterHealth;
+    private boolean myExit;
     WorldOfClickers clicker;
+    java.util.Timer timer2;
     /**
     * This is the constructer
     * pre none
@@ -27,12 +29,14 @@ public class TheBoss extends TimerTask
     * return none
     * post none
     */
-    public TheBoss(WorldOfClickers clicker2, int monsterKills)
+    public TheBoss(WorldOfClickers clicker2, int monsterKills, java.util.Timer timerDelete)
     {
+        myExit = false;
         clicker = clicker2;
         myMonsterHealth = 5;
         myMonsterKills = monsterKills;
         myTimeLeft = BOSSTIME;
+        timer2 = timerDelete;
     }
     
     /**
@@ -53,15 +57,19 @@ public class TheBoss extends TimerTask
             if(clicker.getMonsterHealth() >= 0)
             {
                 myTimeLeft--;
-            }
-        }
+            }//ends if
+        }//ends if
         else
         {
             //this will happen to end the bossFight
             clicker.setBossFight(false);
-            //this will end the boss fight
-            clicker.death(-1272369823);
-        }
+            //to detete theBoss
+            myExit = true;
+        }//ends else
         clicker.setHealth(myMonsterHealth);
-    }
-}
+        if(myExit)
+        {
+            timer2.cancel();
+        }//ends if
+    }//ends run
+}//ends TheBoss

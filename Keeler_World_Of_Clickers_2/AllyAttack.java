@@ -2,6 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.util.*;
 import java.lang.Thread;
+import java.text.DecimalFormat;
 /**
 * This will drive world clicker 2.
 * 
@@ -31,22 +32,6 @@ public class AllyAttack extends TimerTask
    
     public void run()
     {
-        //bob
-        myMonsterHealth = clicker.getMonsterHealth();
-        if(clicker.getBob() == true)
-        {
-            myMonsterHealth -= bob.getDamage();
-            clicker.setHealth(myMonsterHealth);
-        }//ends if
-    
-        //issy
-        myMonsterHealth = clicker.getMonsterHealth();
-        if(clicker.getIssy() == true)
-        {
-            myMonsterHealth -= issy.getDamage();
-            clicker.setHealth(myMonsterHealth);
-        }//ends if
-    
         //ryonical
         myMonsterHealth = clicker.getMonsterHealth();
         if(clicker.getRyonical() == true)
@@ -55,6 +40,25 @@ public class AllyAttack extends TimerTask
             clicker.setHealth(myMonsterHealth);
         }//ends if
         
+        //issy
+        myMonsterHealth = clicker.getMonsterHealth();
+        if(clicker.getIssy() == true)
+        {
+            myMonsterHealth -= issy.getDamage();
+            clicker.setHealth(myMonsterHealth);
+        }//ends if
+        
+        //bob
+        myMonsterHealth = clicker.getMonsterHealth();
+        if(clicker.getBob() == true)
+        {
+            myMonsterHealth -= bob.getDamage();
+            clicker.setHealth(myMonsterHealth);
+        }//ends if
+    
+        
+    
+        DecimalFormat format = new DecimalFormat("0.#");
         //this is output
         double myMonsterHealth = 5;
         int myTotalGold;
@@ -74,7 +78,7 @@ public class AllyAttack extends TimerTask
         myRyonicalUpgrade = ryonical.getCost();
         //gets gold
         myTotalGold = clicker.getTotalGold();
-        messagePanel.setMessage("The monster has " + myMonsterHealth + " health You have " + myTotalGold + " gold" + 
+        messagePanel.setMessage("The monster has " + format.format(myMonsterHealth) + " health You have " + myTotalGold + " gold" + 
         " The next upgrade costs " + myDamageUpgradeCost + " gold Bob costs " + myBobUpgrade + " gold, issy costs " +
         myissyUpgrade + " gold, and Ryonical costs " + myRyonicalUpgrade + " gold.");
         jftMessage.requestFocusInWindow();

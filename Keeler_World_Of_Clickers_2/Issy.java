@@ -8,8 +8,8 @@ import java.util.*;
 */
 public class Issy implements Ally
 {
-    public final double MYDAMAGEINCREACE = 1.23;
-    public final double MYCOSTINCREACE = 1.25;
+    public final double MY_DAMAGE_INCREACE = 1.23;
+    public final double MY_COST_INCREACE = 1.25;
     private ArrayList <Double> myDamage;
     private ArrayList <Integer> myCost;
     /**
@@ -23,8 +23,10 @@ public class Issy implements Ally
     {
         myDamage = new ArrayList<Double>();
         myCost = new ArrayList<Integer>();
-        myDamage.add((Double)300.0);
-        myCost.add((Integer)500);
+        //I want it to start at 30 damage a time
+        myDamage.add((Double)((30/MY_DAMAGE_INCREACE) / 4));//this is how much damage 
+        //it starts at I want 30 dps and it attacks 4 times a second
+        myCost.add((Integer)1000);//this is how much it costs at the begining
     }//ends constructer
     
     /**
@@ -71,9 +73,9 @@ public class Issy implements Ally
              }
              else
              {
-                 myDamage.add(myDamage.get((myDamage.size() - 1)).doubleValue() * MYDAMAGEINCREACE);
+                 myDamage.add(myDamage.get((myDamage.size() - 1)).doubleValue() * MY_DAMAGE_INCREACE);
              }
-             myCost.add((int)(myCost.get((myCost.size() - 1)).intValue() * MYCOSTINCREACE));
+             myCost.add((int)(myCost.get((myCost.size() - 1)).intValue() * MY_COST_INCREACE));
              clicker.setGold(gold);
              clicker.setIssy(true);
          }//ends if
