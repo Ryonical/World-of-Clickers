@@ -10,8 +10,10 @@ public class Issy implements Ally
 {
     public final double MY_DAMAGE_INCREACE = 1.23;
     public final double MY_COST_INCREACE = 1.25;
+    public final int ROUND = 100;
     private ArrayList <Double> myDamage;
     private ArrayList <Integer> myCost;
+    private boolean myFirst;
     /**
     * This is the constructer.
     * pre none
@@ -23,10 +25,8 @@ public class Issy implements Ally
     {
         myDamage = new ArrayList<Double>();
         myCost = new ArrayList<Integer>();
-        //I want it to start at 30 damage a time
-        myDamage.add((Double)((30/MY_DAMAGE_INCREACE) / 4));//this is how much damage 
-        //it starts at I want 30 dps and it attacks 4 times a second
-        myCost.add((Integer)1000);//this is how much it costs at the begining
+        myCost.add((Integer)500);//this is how much it costs at the begining
+        myFirst = true;
     }//ends constructer
     
     /**
@@ -38,7 +38,14 @@ public class Issy implements Ally
     */
     public Double getDamage()
     {
-        return myDamage.get(myDamage.size()-1);
+        if(myFirst)
+        {
+            return 0.0;
+        }
+        else
+        {
+            return myDamage.get(myDamage.size()-1);
+        }
     }//ends getDamage
     
     /**
@@ -67,13 +74,16 @@ public class Issy implements Ally
          if(gold >= myCost.get(myCost.size() - 1))
          {
              gold -= myCost.get(myCost.size() - 1);
-             if(myDamage.get(myDamage.size() - 1) <= 5)
+             if(myFirst)
              {
-                 myDamage.add(myDamage.get((myDamage.size() - 1)).doubleValue() + 0.5);
+                 //this is so it starts at the assigned dps
+                 myFirst = false;
+                 myDamage.add((Double)(20.0 / 10));//this is how much damage 
+                 //it starts at I want 30 dps and it attacks 4 times a second
              }
              else
              {
-                 myDamage.add(myDamage.get((myDamage.size() - 1)).doubleValue() * MY_DAMAGE_INCREACE);
+                 myDamage.add((double)((int)(myDamage.get((myDamage.size() - 1)).doubleValue() * MY_DAMAGE_INCREACE * ROUND)) / ROUND);
              }
              myCost.add((int)(myCost.get((myCost.size() - 1)).intValue() * MY_COST_INCREACE));
              clicker.setGold(gold);

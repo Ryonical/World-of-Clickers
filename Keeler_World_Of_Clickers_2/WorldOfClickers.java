@@ -33,8 +33,10 @@ public class WorldOfClickers extends JFrame
     public final double UPGRADE_COST_INCREASE = 1.25;//this is how much more gold to upgrade damage
     //gold finals
     public final double PROGRESS_GOLD = 1.5;//this is how much mor you make when you go to the next level
-    public final int UPGRADE_COST_IF = 4;//this will be used for if's
-    
+    public final int UPGRADE_COST_IF = 3;//this will be used for if's
+    //health finals
+    public final int STARTING_HEALTH = 10;//this is how much health the monster starts with
+    //at the begging of the game
     
     //this is monster health
     private double myMonsterHealth;//this is the monster health
@@ -47,6 +49,7 @@ public class WorldOfClickers extends JFrame
      //ally vars
     private boolean myHaveBob;
     private boolean myHaveIssy;
+    private boolean myHaveSkeeldude;
     private boolean myHaveRyonical;
     
     
@@ -70,8 +73,8 @@ public class WorldOfClickers extends JFrame
     public WorldOfClickers()
     {
         //monster health
-        myMonsterHealth = 10;
-        myBaseMonsterHealth = 10;
+        myMonsterHealth = STARTING_HEALTH;
+        myBaseMonsterHealth = STARTING_HEALTH;
         
         //attack damage
         myAttackDamage = 1;
@@ -79,9 +82,10 @@ public class WorldOfClickers extends JFrame
             //ally vars
         myHaveBob = false;
         myHaveIssy = false;
+        myHaveSkeeldude = false;
         myHaveRyonical = false;
         //gold
-        myTotalGold = 100;
+        myTotalGold = 0;
         myGoldGain = 1;
         myDamageUpgradeCost = 5;
         
@@ -244,6 +248,30 @@ public class WorldOfClickers extends JFrame
     * return none
     * post none
     */
+    public void setSkeeldude(boolean skeeldude)
+    {
+        myHaveSkeeldude = skeeldude;
+    }//ends setIsst
+    
+    /**
+    * This will set gold after upgrading.
+    * pre none
+    * pram none
+    * return none
+    * post none
+    */
+    public boolean getSkeeldude()
+    {
+        return myHaveSkeeldude;
+    }//ends getIssy
+    
+    /**
+    * This will set gold after upgrading.
+    * pre none
+    * pram none
+    * return none
+    * post none
+    */
     public void setRyonical(boolean ryonical)
     {
         myHaveRyonical = ryonical;
@@ -262,6 +290,18 @@ public class WorldOfClickers extends JFrame
     }//ends getRyonical
     
     /**
+    * This will set gold after upgrading.
+    * pre none
+    * pram none
+    * return none
+    * post none
+    */
+    public boolean getBossKill()
+    {
+        return myBossKill;
+    }
+    
+    /**
     * This will attack
     * pre none
     * pram none
@@ -271,6 +311,7 @@ public class WorldOfClickers extends JFrame
     public double attack()
     {
         myMonsterHealth -= myAttackDamage;
+        death(myMonsterHealth);
         return myMonsterHealth;
     }//ends attack
     
@@ -409,17 +450,22 @@ public class WorldOfClickers extends JFrame
     */
     public void degress()
     {
-        
-        myBossKill = true;
-        if(myGoldGain <= UPGRADE_COST_IF)
+        if(myBaseMonsterHealth > STARTING_HEALTH)
         {
-            myGoldGain--;
+            myBossKill = true;
+            if(myGoldGain <= UPGRADE_COST_IF)
+            {
+                if(myGoldGain > 1)
+                {
+                     myGoldGain--;
+                }
+            }
+            else
+            {
+                myGoldGain /= PROGRESS_GOLD;
+            }
+            myMonsterKills = 5;
+            myBaseMonsterHealth /= 2;
         }
-        else
-        {
-            myGoldGain /= UPGRADE_COST_INCREASE;
-        }
-        myMonsterKills = 5;
-        myBaseMonsterHealth /= 2;
-      }
+    }
 }

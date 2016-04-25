@@ -15,16 +15,18 @@ public class AllyAttack extends TimerTask
     WorldOfClickers clicker;
     Bob bob;
     Issy issy;
+    Skeeldude skeeldude;
     Ryonical ryonical;
     MessagePanel messagePanel;
     JTextField jftMessage;
     public AllyAttack(WorldOfClickers clicker2, 
-    Bob bob2, Issy issy2, Ryonical ryonical2,
+    Bob bob2, Issy issy2, Skeeldude skeeldude2, Ryonical ryonical2,
     MessagePanel messagePanel2, JTextField jftMessage2)
     {
         clicker = clicker2;
         bob = bob2;
         issy = issy2;
+        skeeldude = skeeldude2;
         ryonical = ryonical2;
         messagePanel = messagePanel2;
         jftMessage = jftMessage2;
@@ -37,6 +39,14 @@ public class AllyAttack extends TimerTask
         if(clicker.getRyonical() == true)
         {
             myMonsterHealth -= ryonical.getDamage();
+            clicker.setHealth(myMonsterHealth);
+        }//ends if
+        
+        //Skeeldude
+        myMonsterHealth = clicker.getMonsterHealth();
+        if(clicker.getSkeeldude() == true)
+        {
+            myMonsterHealth -= skeeldude.getDamage();
             clicker.setHealth(myMonsterHealth);
         }//ends if
         
@@ -57,14 +67,15 @@ public class AllyAttack extends TimerTask
         }//ends if
     
         
-    
+        //to remove the exess numbers off the monster health
         DecimalFormat format = new DecimalFormat("0.#");
         //this is output
         double myMonsterHealth = 5;
         int myTotalGold;
         int myDamageUpgradeCost;
         int myBobUpgrade;
-        int myissyUpgrade;
+        int myIssyUpgrade;
+        int mySkeeldudeUpgrade;
         int myRyonicalUpgrade;
         //gets monster health
         myMonsterHealth = clicker.getMonsterHealth();
@@ -73,14 +84,16 @@ public class AllyAttack extends TimerTask
         //gets bob costs
         myBobUpgrade = bob.getCost();
         //gets issy costs
-        myissyUpgrade = issy.getCost();
+        myIssyUpgrade = issy.getCost();
+        //gets issy costs
+        mySkeeldudeUpgrade = skeeldude.getCost();
         //gets ryonical costs
         myRyonicalUpgrade = ryonical.getCost();
         //gets gold
         myTotalGold = clicker.getTotalGold();
         messagePanel.setMessage("The monster has " + format.format(myMonsterHealth) + " health You have " + myTotalGold + " gold" + 
-        " The next upgrade costs " + myDamageUpgradeCost + " gold Bob costs " + myBobUpgrade + " gold, issy costs " +
-        myissyUpgrade + " gold, and Ryonical costs " + myRyonicalUpgrade + " gold.");
+        " The next upgrade costs " + myDamageUpgradeCost + " gold Bob costs " + myBobUpgrade + " gold, issy costs " + myIssyUpgrade +" gold, Skeeldude costs " + mySkeeldudeUpgrade +
+        " gold, and Ryonical costs " + myRyonicalUpgrade + " gold the DPS is " + format.format((bob.getDamage() + issy.getDamage() + ryonical.getDamage()) * 10));
         jftMessage.requestFocusInWindow();
         messagePanel.repaint();
     }//ends run

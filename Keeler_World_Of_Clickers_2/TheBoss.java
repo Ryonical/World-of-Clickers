@@ -15,11 +15,10 @@ import java.lang.Thread;
 */
 public class TheBoss extends TimerTask
 {
-    public int BOSSTIME = 5;
+    public int BOSS_TIME = 500;
     private int myTimeLeft;
     private int myMonsterKills;
     private double myMonsterHealth;
-    private boolean myExit;
     WorldOfClickers clicker;
     java.util.Timer timer2;
     /**
@@ -31,11 +30,10 @@ public class TheBoss extends TimerTask
     */
     public TheBoss(WorldOfClickers clicker2, int monsterKills, java.util.Timer timerDelete)
     {
-        myExit = false;
         clicker = clicker2;
         myMonsterHealth = 5;
         myMonsterKills = monsterKills;
-        myTimeLeft = BOSSTIME;
+        myTimeLeft = BOSS_TIME;
         timer2 = timerDelete;
     }
     
@@ -63,13 +61,11 @@ public class TheBoss extends TimerTask
         {
             //this will happen to end the bossFight
             clicker.setBossFight(false);
-            //to detete theBoss
-            myExit = true;
+            timer2.cancel();
         }//ends else
-        clicker.setHealth(myMonsterHealth);
-        if(myExit)
+        if(clicker.getBossKill())
         {
             timer2.cancel();
-        }//ends if
+        }
     }//ends run
 }//ends TheBoss

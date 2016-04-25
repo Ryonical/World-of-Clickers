@@ -6,7 +6,7 @@ import java.util.*;
 * @Ryan Keeler
 * @World Of Clicker
 */
-public class Ryonical implements Ally
+public class Skeeldude implements Ally
 {
     public final double MY_DAMAGE_INCREACE = 1.23;
     public final double MY_COST_INCREACE = 1.25;
@@ -21,11 +21,11 @@ public class Ryonical implements Ally
     * return none
     * post none
     */
-    public Ryonical()
+    public Skeeldude()
     {
         myDamage = new ArrayList<Double>();
         myCost = new ArrayList<Integer>();
-        myCost.add((Integer)25000);//this is how much it costs at the begining
+        myCost.add((Integer)2500);//this is how much it costs at the begining
         myFirst = true;
     }//ends constructer
     
@@ -78,8 +78,8 @@ public class Ryonical implements Ally
              {
                  //this is so it starts at the assigned dps
                  myFirst = false;
-                 myDamage.add((Double)(1000.0 / 10));//this is how much damage 
-                 //it starts at I want 100 dps and it attacks 4 times a second
+                 myDamage.add((Double)(100.0 / 10));//this is how much damage 
+                 //it starts at I want 30 dps and it attacks 4 times a second
              }
              else
              {
@@ -87,7 +87,7 @@ public class Ryonical implements Ally
              }
              myCost.add((int)(myCost.get((myCost.size() - 1)).intValue() * MY_COST_INCREACE));
              clicker.setGold(gold);
-             clicker.setRyonical(true);
+             clicker.setSkeeldude(true);
          }//ends if
     }//ends upgrade
 }//ends Ryonical

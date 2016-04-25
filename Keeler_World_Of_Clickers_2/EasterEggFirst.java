@@ -13,11 +13,12 @@ import java.lang.Thread;
 */
 public class EasterEggFirst extends EasterEgg
 {
-    public final int GOLDFORDAYS = 999999999; //this will be how much 
+    public final int GOLD_FOR_DAYS = 999999999; //this will be how much 
     //gold you have if you do the easter egg
     WorldOfClickers clicker;
     Bob bob;
     Issy issy;
+    Skeeldude skeeldude;
     Ryonical ryonical;
     MessagePanel messagePanel;
     JTextField jftMessage;
@@ -35,7 +36,7 @@ public class EasterEggFirst extends EasterEgg
     * post none
     */
     public EasterEggFirst(WorldOfClickers clicker2, 
-    Bob bob2, Issy issy2, Ryonical ryonical2,
+    Bob bob2, Issy issy2, Skeeldude skeeldude2, Ryonical ryonical2,
     MessagePanel messagePanel2, JTextField jftMessage2,
     EasterEggSecond secondEgg2)
     {
@@ -43,6 +44,7 @@ public class EasterEggFirst extends EasterEgg
         clicker = clicker2;
         bob = bob2;
         issy = issy2;
+        skeeldude = skeeldude2;
         ryonical = ryonical2;
         messagePanel = messagePanel2;
         jftMessage = jftMessage2;
@@ -160,7 +162,7 @@ public class EasterEggFirst extends EasterEgg
     */
     public void ability()
     {
-        clicker.setGold(GOLDFORDAYS);
+        clicker.setGold(GOLD_FOR_DAYS);
         myHasGone = true;
         secondEgg.read();
     }//ends ability
