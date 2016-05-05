@@ -1,5 +1,4 @@
 import java.util.*;
-
 /**
 * This will be your Secpnd Ally.
 * 
@@ -8,11 +7,11 @@ import java.util.*;
 */
 public class Ryonical implements Ally
 {
-    public final double MY_DAMAGE_INCREACE = 1.23;
-    public final double MY_COST_INCREACE = 1.25;
+    public final double MY_DAMAGE_INCREACE = 1.25;
+    public final double MY_COST_INCREACE = 1.23;
     public final int ROUND = 100;
-    private ArrayList <Double> myDamage;
-    private ArrayList <Integer> myCost;
+    private double myDamage;
+    private int myCost;
     private boolean myFirst;
     /**
     * This is the constructer.
@@ -23,11 +22,23 @@ public class Ryonical implements Ally
     */
     public Ryonical()
     {
-        myDamage = new ArrayList<Double>();
-        myCost = new ArrayList<Integer>();
-        myCost.add((Integer)25000);//this is how much it costs at the begining
+        myDamage = 0;
+        myCost = 25000;//this is how much it costs at the begining
         myFirst = true;
     }//ends constructer
+    
+    
+    /**
+    * This will set myDamage.
+    * pre none
+    * pram none
+    * return none
+    * post myDamage
+    */
+    public void setDamage(double damage)
+    {
+         myDamage = damage;
+    }//ends getCost
     
     /**
     * This will return myDamage.
@@ -36,7 +47,7 @@ public class Ryonical implements Ally
     * return myDamage
     * post none
     */
-    public Double getDamage()
+    public double getDamage()
     {
         if(myFirst)
         {
@@ -44,9 +55,45 @@ public class Ryonical implements Ally
         }
         else
         {
-            return myDamage.get(myDamage.size()-1);
+            return myDamage;
         }
     }//ends getDamage
+    
+    /**
+    * This will set myFirst.
+    * pre none
+    * pram none
+    * return none
+    * post myFirst
+    */
+    public void setFirst(boolean first)
+    {
+         myFirst = first;
+    }//ends getCost
+    
+    /**
+    * This will return myFirst.
+    * pre none
+    * pram none
+    * return myFirst
+    * post none
+    */
+    public boolean getFirst()
+    {
+         return myFirst;
+    }//ends getCost
+    
+    /**
+    * This will set myCost.
+    * pre none
+    * pram none
+    * return none
+    * post myCost
+    */
+    public void setCost(int cost)
+    {
+         myCost = cost;
+    }//ends getCost
     
     /**
     * This will return myCost.
@@ -55,13 +102,13 @@ public class Ryonical implements Ally
     * return myCost
     * post none
     */
-    public Integer getCost()
+    public int getCost()
     {
-        return myCost.get(myCost.size() - 1);
+        return myCost;
     }//ends getCost
     
     /**
-    * This will upgrade Bob.
+    * This will upgrade Ryonical.
     * pre none
     * pram clicker
     * return none
@@ -71,22 +118,22 @@ public class Ryonical implements Ally
     {
          int gold;
          gold = clicker.getTotalGold();
-         if(gold >= myCost.get(myCost.size() - 1))
+         if(gold >= myCost)
          {
-             gold -= myCost.get(myCost.size() - 1);
+             gold -= myCost;
              if(myFirst)
              {
                  //this is so it starts at the assigned dps
                  myFirst = false;
-                 myDamage.add((Double)(1000.0 / 10));//this is how much damage 
-                 //it starts at I want 100 dps and it attacks 4 times a second
+                 myDamage =(1000.0 / 10);//this is how much damage 
+                 //it starts at I want 5 dps and it attacks 10 times a second
              }
              else
              {
-                 myDamage.add((double)((int)(myDamage.get((myDamage.size() - 1)).doubleValue() * MY_DAMAGE_INCREACE * ROUND)) / ROUND);
+                 myDamage *= (MY_DAMAGE_INCREACE * ROUND) / ROUND;
              }
-             myCost.add((int)(myCost.get((myCost.size() - 1)).intValue() * MY_COST_INCREACE));
-             clicker.setGold(gold);
+             myCost *= MY_COST_INCREACE;
+             clicker.setTotalGold(gold);
              clicker.setRyonical(true);
          }//ends if
     }//ends upgrade

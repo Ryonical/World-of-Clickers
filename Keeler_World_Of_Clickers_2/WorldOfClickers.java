@@ -1,5 +1,5 @@
 /*
- *1 Integer && Double in Ally Children done
+ *1 Integer && Double in Load reader() done
  *2 5 relational operaters (== in death, <= in death, >= in damageUpgrade,
  * != in attack, && in bossFight) done
  *3 if else in attack done
@@ -17,7 +17,7 @@
  */ 
 import java.awt.*;
 import javax.swing.*;
-
+import java.text.DecimalFormat;
 /**
 * This will drive world clicker 2.
 * 
@@ -36,7 +36,15 @@ public class WorldOfClickers extends JFrame
     public final int UPGRADE_COST_IF = 3;//this will be used for if's
     //health finals
     public final int STARTING_HEALTH = 10;//this is how much health the monster starts with
-    //at the begging of the game
+    //simplify finals
+    public final int ROUND = 10;
+    public final int CHANGE_DECIMAL = 100;
+    public final int MIN_FIRST = 1000;
+    public final double MAX_FIRST = 1000000;
+    public final double MAX_SECOND = 1000000000;
+    
+    //simplify vars
+    private char myType;
     
     //this is monster health
     private double myMonsterHealth;//this is the monster health
@@ -72,6 +80,9 @@ public class WorldOfClickers extends JFrame
     */
     public WorldOfClickers()
     {
+        //symplify
+        myType = ' ';
+        
         //monster health
         myMonsterHealth = STARTING_HEALTH;
         myBaseMonsterHealth = STARTING_HEALTH;
@@ -95,6 +106,77 @@ public class WorldOfClickers extends JFrame
         myMonsterKills = 0;
     }//ends constructer
     
+    /**
+    * This will set myAttackDamage.
+    * pre none
+    * pram none
+    * return none
+    * post myAttackDamage
+    */
+    public void setAttackDamage(int attackDamage)
+    {
+        myAttackDamage = attackDamage;
+    }//ends myAttackDamage
+    
+    /**
+    * This will return myAttackDamage.
+    * pre none
+    * pram none
+    * return myAttackDamage
+    * post none
+    */
+    public int getAttackDamage()
+    {
+        return myAttackDamage;
+    }//ends myAttackDamage
+    
+    /**
+    * This will set myDamageUpgrade.
+    * pre none
+    * pram none
+    * return none
+    * post myDamageUpgrade
+    */
+    public void setDamageUpgrade(double damageIncrece)
+    {
+        myDamageUpgrade = damageIncrece;
+    }//ends myAttackDamage
+    
+    /**
+    * This will return myDamageUpgrade.
+    * pre none
+    * pram none
+    * return myDamageUpgrade
+    * post none
+    */
+    public double getDamageUpgrade()
+    {
+        return myDamageUpgrade;
+    }//ends myAttackDamage
+    
+    /**
+    * This will set myDamageUpgrade.
+    * pre none
+    * pram none
+    * return none
+    * post myDamageUpgrade
+    */
+    public void setDamageUpgradeCost(int damageCost)
+    {
+        myDamageUpgradeCost = damageCost;
+    }//ends myAttackDamage
+    
+    /**
+    * This will return myDamageUpgrade.
+    * pre none
+    * pram none
+    * return myDamageUpgrade
+    * post none
+    */
+    public int getDamageUpgradeCost()
+    {
+        return myDamageUpgradeCost;
+    }//ends myAttackDamage
     
     /**
     * This will return myMonsterKills.
@@ -113,7 +195,7 @@ public class WorldOfClickers extends JFrame
     * pre none
     * pram bossFight
     * return none
-    * post none
+    * post myBossFight
     */
     public void setBossFight(boolean bossFight)
     {
@@ -137,7 +219,7 @@ public class WorldOfClickers extends JFrame
     * pre none
     * pram none
     * return none
-    * post none
+    * post myMonsterHealth
     */
     public void setHealth(double health)
     {
@@ -158,6 +240,31 @@ public class WorldOfClickers extends JFrame
     }//ends getMonsterHealth
     
     /**
+    * This will set monster health after loading.
+    * pre none
+    * pram none
+    * return none
+    * post myBaseMonsterHealth
+    */
+    public void setBaseHealth(int health)
+    {
+        myBaseMonsterHealth = health;
+        death(myMonsterHealth);
+    }//ends setHealth
+    
+    /**
+    * This will return myBaseMonsterHealth.
+    * pre none
+    * pram none
+    * return myBaseMonsterHealth
+    * post none
+    */
+    public int getBaseMonsterHealth()
+    {
+        return myBaseMonsterHealth;
+    }//ends getMonsterHealth
+    
+    /**
     * This will return myTotalGold.
     * pre none
     * pram none
@@ -170,35 +277,47 @@ public class WorldOfClickers extends JFrame
     }//ends getTotalGold
     
     /**
-    * This will return myDamageUpgradeCost.
-    * pre none
-    * pram none
-    * return myDamageUpgradeCost
-    * post none
-    */
-    public int getDamageUpgradeCost()
-    {
-        return myDamageUpgradeCost;
-    }//ends getDamageUpgradeCost
-    
-    /**
     * This will set gold after upgrading.
     * pre none
     * pram none
     * return none
-    * post none
+    * post myTotalGold
     */
-    public void setGold(int gold)
+    public void setTotalGold(int gold)
     {
         myTotalGold = gold;
     }//ends setGold
     
     /**
+    * This will set myGoldGain after loading.
+    * pre none
+    * pram none
+    * return none
+    * post myGoldGain
+    */
+    public void setGoldGain(int goldGain)
+    {
+        myGoldGain = goldGain;
+    }//ends setGold
+    
+    /**
+    * This will return myGoldGain.
+    * pre none
+    * pram none
+    * return myGoldGain
+    * post none
+    */
+    public int getGoldGain()
+    {
+        return myGoldGain;
+    }//ends getTotalGold
+    
+    /**
     * This will set gold after upgrading.
     * pre none
     * pram none
     * return none
-    * post none
+    * post myHaveBob
     */
     public void setBob(boolean bob)
     {
@@ -290,16 +409,28 @@ public class WorldOfClickers extends JFrame
     }//ends getRyonical
     
     /**
-    * This will set gold after upgrading.
+    * This will set myBossKill.
     * pre none
     * pram none
     * return none
-    * post none
+    * post myBossKill
     */
     public boolean getBossKill()
     {
         return myBossKill;
-    }
+    }//ends getBossKill
+    
+    /**
+    * This will set gold after upgrading.
+    * pre none
+    * pram none
+    * return myType
+    * post none
+    */
+    public char getMyType()
+    {
+        return myType;
+    }//ends getType
     
     /**
     * This will attack
@@ -367,21 +498,21 @@ public class WorldOfClickers extends JFrame
             if(myAttackDamage <= HIGH_DAMAGE_INCREASE)
             {
                myAttackDamage += 1;
-            }
+            }//ends if
             else
             {
                 myAttackDamage += myDamageUpgrade;
-            }
+            }//ends else
             if(myDamageUpgradeCost <= UPGRADE_COST_IF)
             {
                myDamageUpgradeCost += 1;
-            }
+            }//ends if
             else
             {
                 myDamageUpgradeCost *= UPGRADE_COST_INCREASE;
-            }
-        }
-    }
+            }//ends else
+        }//ends if
+    }//ends damageUpgrade
     
     /**
     * This will upgrade damage as many times as possible
@@ -400,21 +531,21 @@ public class WorldOfClickers extends JFrame
             if(myAttackDamage <= HIGH_DAMAGE_INCREASE)
             {
                myAttackDamage += 1;
-            }
+            }//ends if
             else
             {
                 myAttackDamage += myDamageUpgrade;
-            }
+            }//ends else
             if(myDamageUpgradeCost <= UPGRADE_COST_IF)
             {
                myDamageUpgradeCost += 1;
-            }
+            }//ends if
             else
             {
                 myDamageUpgradeCost *= UPGRADE_COST_INCREASE;
-            }
-        }
-    }
+            }//ends else
+        }//ends while
+    }//ends damageUpgradeAll
     
     /**
     * This will let you progress
@@ -431,15 +562,15 @@ public class WorldOfClickers extends JFrame
             if(myGoldGain <= UPGRADE_COST_IF)
             {
                myGoldGain++;
-            }
+            }//ends if
             else
             {
                 myGoldGain *= PROGRESS_GOLD;
-            }
+            }//ends else
             myMonsterKills = 0;
             myBaseMonsterHealth *= 2;
-        }
-    }
+        }//ends if
+    }//ends progress
     
     /**
     * This will let you go back
@@ -458,14 +589,87 @@ public class WorldOfClickers extends JFrame
                 if(myGoldGain > 1)
                 {
                      myGoldGain--;
-                }
-            }
+                }//ends if
+            }//ends if
             else
             {
                 myGoldGain /= PROGRESS_GOLD;
-            }
+            }//ends else
             myMonsterKills = 5;
             myBaseMonsterHealth /= 2;
-        }
-    }
-}
+        }//ends if
+    }//ends degress
+    
+    /**
+    * This will let you go back
+    * pre none
+    * pram none
+    * return none
+    * post none
+    */
+    public double simplify(double amount, String returnType)
+    {
+        int newAmount;
+        if(amount < MIN_FIRST)
+        {
+            //shows that it is in the hundreds or less
+            myType = ' ';
+        }//ends if
+        else if(amount < MAX_FIRST)
+        {
+            //shows that it is in the thousends
+            amount = ((int)(amount * CHANGE_DECIMAL) / CHANGE_DECIMAL);
+            amount = (int)(amount / (MIN_FIRST / ROUND));
+            amount /= ROUND;
+            myType = 'K';
+        }//ends else if
+        else if(amount < MAX_SECOND)
+        {
+            //shows that it is in the milions
+            amount = ((int)(amount * CHANGE_DECIMAL) / CHANGE_DECIMAL);
+            amount = (int)(amount / (MAX_FIRST / ROUND));
+            amount /= ROUND;
+            myType = 'M';
+        }//ends else if
+        //will output not as decimal
+        if(!returnType.equals("damage"))
+        {
+            newAmount = (int)amount;
+            return newAmount;
+        }//ends if
+        //normal output
+        return amount;
+    }//ends simplify
+    
+    /**
+    * This will let you go back
+    * pre none
+    * pram none
+    * return none
+    * post none
+    */
+    public char symbol(double amount)
+    {
+        int newAmount;
+        if(amount < MIN_FIRST)
+        {
+            //shows that it is in the hundreds or less
+            myType = ' ';
+        }//ends if
+        else if(amount < MAX_FIRST)
+        {
+            //shows that it is in the thousends
+            
+            myType = 'K';
+        }//ends else if
+        else if(amount < MAX_SECOND)
+        {
+            //shows that it is in the milions
+            
+            myType = 'M';
+        }//ends else if
+        
+        //normal output
+        return myType;
+    }//ends simplify
+}//ends WorldOfClickers

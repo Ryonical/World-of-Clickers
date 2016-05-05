@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=clicker2\ bob2\ issy2\ skeeldude2\ ryonical2\ messagePanel2\ jftMessage2
-comment0.target=AllyAttack(WorldOfClickers,\ Bob,\ Issy,\ Skeeldude,\ Ryonical,\ MessagePanel,\ javax.swing.JTextField)
+comment0.params=clicker2\ bob2\ issy2\ skeeldude2\ ryonical2\ button2\ messagePanel2\ jftMessage2
+comment0.target=AllyAttack(WorldOfClickers,\ Bob,\ Issy,\ Skeeldude,\ Ryonical,\ Buttons,\ MessagePanel,\ javax.swing.JTextField)
 comment1.params=
 comment1.target=void\ run()
 numComments=2

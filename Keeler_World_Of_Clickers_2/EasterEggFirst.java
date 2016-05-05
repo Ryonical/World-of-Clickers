@@ -73,7 +73,7 @@ public class EasterEggFirst extends EasterEgg
     {
         try
         {
-            f = new File("E:\\6\\Keeler_World_Of_Clickers_2\\AAEasterEgg.txt");
+            f = new File("AAEasterEgg.txt");
             inFile = new Scanner(f);
         }//ends try
         catch(Exception e)
@@ -158,12 +158,24 @@ public class EasterEggFirst extends EasterEgg
     * pre none
     * pram none
     * return none
-    * post none
+    * post myHasGone
     */
     public void ability()
     {
-        clicker.setGold(GOLD_FOR_DAYS);
+        clicker.setTotalGold(GOLD_FOR_DAYS);
         myHasGone = true;
         secondEgg.read();
     }//ends ability
+    
+    /**
+    * This will get myHasGone.
+    * pre none
+    * pram none
+    * return myHasGone
+    * post none
+    */
+    public boolean getHasGone()
+    {
+        return myHasGone;
+    }//ends getHasGone
 }//ends EasterEggFirst

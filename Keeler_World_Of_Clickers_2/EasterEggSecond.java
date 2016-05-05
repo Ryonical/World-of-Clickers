@@ -155,7 +155,7 @@ public class EasterEggSecond extends EasterEgg
     */
     public void ability()
     {
-        clicker.setGold(GOLD_FOR_NO_DAYS);
+        clicker.setTotalGold(GOLD_FOR_NO_DAYS);
         myHasGone = true;
     }//ends ability
 }//ends EasterEggFirst

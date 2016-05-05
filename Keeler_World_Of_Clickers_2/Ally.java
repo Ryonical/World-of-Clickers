@@ -15,7 +15,7 @@ public interface Ally
     * return myDamage
     * post none
     */
-    public abstract Double getDamage();
+    public abstract double getDamage();
     
     /**
     * This will return myCost.
@@ -24,7 +24,7 @@ public interface Ally
     * return myCost
     * post none
     */
-    public abstract Integer getCost();
+    public abstract int getCost();
     
     /**
     * This will upgrade the Ally.

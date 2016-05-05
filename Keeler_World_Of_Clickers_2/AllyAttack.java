@@ -17,17 +17,19 @@ public class AllyAttack extends TimerTask
     Issy issy;
     Skeeldude skeeldude;
     Ryonical ryonical;
+    Buttons button;
     MessagePanel messagePanel;
     JTextField jftMessage;
     public AllyAttack(WorldOfClickers clicker2, 
     Bob bob2, Issy issy2, Skeeldude skeeldude2, Ryonical ryonical2,
-    MessagePanel messagePanel2, JTextField jftMessage2)
+    Buttons button2, MessagePanel messagePanel2, JTextField jftMessage2)
     {
         clicker = clicker2;
         bob = bob2;
         issy = issy2;
         skeeldude = skeeldude2;
         ryonical = ryonical2;
+        button = button2;
         messagePanel = messagePanel2;
         jftMessage = jftMessage2;
     }//ends constructer
@@ -67,34 +69,6 @@ public class AllyAttack extends TimerTask
         }//ends if
     
         
-        //to remove the exess numbers off the monster health
-        DecimalFormat format = new DecimalFormat("0.#");
-        //this is output
-        double myMonsterHealth = 5;
-        int myTotalGold;
-        int myDamageUpgradeCost;
-        int myBobUpgrade;
-        int myIssyUpgrade;
-        int mySkeeldudeUpgrade;
-        int myRyonicalUpgrade;
-        //gets monster health
-        myMonsterHealth = clicker.getMonsterHealth();
-        //gets costs
-        myDamageUpgradeCost = clicker.getDamageUpgradeCost();
-        //gets bob costs
-        myBobUpgrade = bob.getCost();
-        //gets issy costs
-        myIssyUpgrade = issy.getCost();
-        //gets issy costs
-        mySkeeldudeUpgrade = skeeldude.getCost();
-        //gets ryonical costs
-        myRyonicalUpgrade = ryonical.getCost();
-        //gets gold
-        myTotalGold = clicker.getTotalGold();
-        messagePanel.setMessage("The monster has " + format.format(myMonsterHealth) + " health You have " + myTotalGold + " gold" + 
-        " The next upgrade costs " + myDamageUpgradeCost + " gold Bob costs " + myBobUpgrade + " gold, issy costs " + myIssyUpgrade +" gold, Skeeldude costs " + mySkeeldudeUpgrade +
-        " gold, and Ryonical costs " + myRyonicalUpgrade + " gold the DPS is " + format.format((bob.getDamage() + issy.getDamage() + ryonical.getDamage()) * 10));
-        jftMessage.requestFocusInWindow();
-        messagePanel.repaint();
+        button.output(clicker, bob, issy, skeeldude, ryonical, messagePanel, jftMessage);
     }//ends run
 }//ends AllyAttack
