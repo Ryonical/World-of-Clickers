@@ -18,11 +18,9 @@ public class AllyAttack extends TimerTask
     Skeeldude skeeldude;
     Ryonical ryonical;
     Buttons button;
-    MessagePanel messagePanel;
-    JTextField jftMessage;
     public AllyAttack(WorldOfClickers clicker2, 
     Bob bob2, Issy issy2, Skeeldude skeeldude2, Ryonical ryonical2,
-    Buttons button2, MessagePanel messagePanel2, JTextField jftMessage2)
+    Buttons button2)
     {
         clicker = clicker2;
         bob = bob2;
@@ -30,8 +28,6 @@ public class AllyAttack extends TimerTask
         skeeldude = skeeldude2;
         ryonical = ryonical2;
         button = button2;
-        messagePanel = messagePanel2;
-        jftMessage = jftMessage2;
     }//ends constructer
    
     public void run()
@@ -69,6 +65,6 @@ public class AllyAttack extends TimerTask
         }//ends if
     
         
-        button.output(clicker, bob, issy, skeeldude, ryonical, messagePanel, jftMessage);
+        button.output();
     }//ends run
 }//ends AllyAttack

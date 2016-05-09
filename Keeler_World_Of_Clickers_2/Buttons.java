@@ -14,6 +14,7 @@ import java.io.*;
  */
 public class Buttons extends JFrame
 {
+    public final int BUTTON_NUM = 13;
     //vars   
     private JButton jbtAttack;
     private JButton jbtUpgrade;
@@ -31,6 +32,14 @@ public class Buttons extends JFrame
     
     private boolean myAutoSave;
     
+    WorldOfClickers clicker;
+    Bob bob;
+    Issy issy;
+    Skeeldude skeeldude;
+    Ryonical ryonical;
+    EasterEggFirst firstEgg;
+    GameScreen game;
+    
     /**
     * This will be the buttons.
     * pre none
@@ -38,8 +47,20 @@ public class Buttons extends JFrame
     * return none
     * post all
     */
-    public Buttons()
+    public Buttons(WorldOfClickers clicker2, 
+    Bob bob2, Issy issy2, Skeeldude skeeldude2, Ryonical ryonical2,
+    EasterEggFirst firstEgg2, GameScreen game2)
     {
+        
+        
+        clicker = clicker2;
+        bob = bob2;
+        issy = issy2;
+        skeeldude = skeeldude2;
+        ryonical = ryonical2;
+        firstEgg = firstEgg2;
+        game = game2;
+        
         jbtAttack = new JButton("Attack");
         jbtUpgrade = new JButton("Upgrade");
         jbtUpgradeAll = new JButton("Upgrade All");
@@ -64,20 +85,13 @@ public class Buttons extends JFrame
     * return none
     * post all
     */
-    public void activate(WorldOfClickers clicker, Bob bob, Issy issy, Skeeldude skeeldude, Ryonical ryonical,
-    MessagePanel messagePanel, JTextField jftMessage, Load load, EasterEggFirst firstEgg, EasterEggSecond secondEgg)
+    public void activate()
     {
         //to remove the exess numbers off the monster health
         DecimalFormat format = new DecimalFormat("0.#");
         
         
-        Buttons frame = new Buttons();
-
-        frame.setTitle("World of Clicker");
-        frame.setSize(1250, 125);
-        frame.setLocationRelativeTo(null);//centers theclicker
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+        Buttons frame = new Buttons(clicker, bob, issy, skeeldude, ryonical, firstEgg, game);
         
         //adds buttons
         JPanel jpButtons = new JPanel();
@@ -99,12 +113,6 @@ public class Buttons extends JFrame
         //reads in for easteregg
         firstEgg.read();
         
-        //places buttons
-        Container contentPane = frame.getContentPane();
-        contentPane.setLayout(new BorderLayout());
-        contentPane.add(messagePanel, BorderLayout.CENTER);
-        contentPane.add(jpButtons, BorderLayout.SOUTH);
-        
         //attacks
         jbtAttack.addActionListener(new ActionListener()
         {
@@ -113,7 +121,6 @@ public class Buttons extends JFrame
                 clicker.attack();
                 //for the easteregg
                 firstEgg.check("attack");
-                output(clicker, bob, issy, skeeldude, ryonical, messagePanel, jftMessage);
             }//ends actionPerformed
         });//ends jbtAttack
         
@@ -125,7 +132,6 @@ public class Buttons extends JFrame
                 clicker.damageUpgrade();
                 //for the easteregg
                 firstEgg.check("upgrade");
-                output(clicker, bob, issy, skeeldude, ryonical, messagePanel, jftMessage);
             }//ends actionPerformed
         });//ends jbtUpgrade
         
@@ -137,7 +143,6 @@ public class Buttons extends JFrame
                 clicker.damageUpgradeAll();
                 //for the easteregg
                 firstEgg.check("upgrade all");
-                output(clicker, bob, issy, skeeldude, ryonical, messagePanel, jftMessage);
             }//ends actionPerformed
         });//ends jbtUpgradeAll
         
@@ -149,7 +154,6 @@ public class Buttons extends JFrame
                 bob.upgrade(clicker);
                 //for the easteregg
                 firstEgg.check("bob");
-                output(clicker, bob, issy, skeeldude, ryonical, messagePanel, jftMessage);
             }//ends actionPerformed
         });//ends jbtBob
         
@@ -161,7 +165,6 @@ public class Buttons extends JFrame
                 issy.upgrade(clicker);
                 //for the easteregg
                 firstEgg.check("issy");
-                output(clicker, bob, issy, skeeldude, ryonical, messagePanel, jftMessage);
             }//ends actionPerformed
         });//ends jbtIssy
         
@@ -173,7 +176,6 @@ public class Buttons extends JFrame
                 skeeldude.upgrade(clicker);
                 //for the easteregg
                 firstEgg.check("skeeldude");
-                output(clicker, bob, issy, skeeldude, ryonical, messagePanel, jftMessage);
             }//ends actionPerformed
         });//ends jbtSkeeldude
         
@@ -185,7 +187,6 @@ public class Buttons extends JFrame
                 ryonical.upgrade(clicker);
                 //for the easteregg
                 firstEgg.check("ryonical");
-                output(clicker, bob, issy, skeeldude, ryonical, messagePanel, jftMessage);
             }//ends actionPerformed
         });//ends jbtRyonical
         
@@ -206,7 +207,6 @@ public class Buttons extends JFrame
                 }//ends if
                 //for the easteregg
                 firstEgg.check("boss");
-                output(clicker, bob, issy, skeeldude, ryonical, messagePanel, jftMessage);
             }//ends actionPerformed
         });//ends jbtBoss
         
@@ -218,7 +218,6 @@ public class Buttons extends JFrame
                 clicker.progress();
                 //for the easteregg
                 firstEgg.check("progress");
-                output(clicker, bob, issy, skeeldude, ryonical, messagePanel, jftMessage);
             }//ends actionPerformed
         });//ends jbtProgress
         
@@ -230,7 +229,6 @@ public class Buttons extends JFrame
                 clicker.degress();
                 //for the easteregg
                 firstEgg.check("degress");
-                output(clicker, bob, issy, skeeldude, ryonical, messagePanel, jftMessage);
             }//ends actionPerformed
         });//ends jbtDegress
         
@@ -239,12 +237,11 @@ public class Buttons extends JFrame
         {
             public void actionPerformed(ActionEvent e)
             {
-                Save save = new Save(clicker, bob, issy, skeeldude, ryonical, messagePanel, jftMessage, firstEgg);
+                Save save = new Save(clicker, bob, issy, skeeldude, ryonical, firstEgg);
                 save.getStats();
                 save.save();
                 //for the easteregg
                 firstEgg.check("save");
-                output(clicker, bob, issy, skeeldude, ryonical, messagePanel, jftMessage);
             }//ends actionPerformed
         });//ends jbtSave
         
@@ -257,7 +254,7 @@ public class Buttons extends JFrame
                 java.util.Timer timer1 = new java.util.Timer();
                 if(!myAutoSave)
                 {
-                    timer1.schedule(new AutoSave(clicker, bob, issy, skeeldude, ryonical, messagePanel, jftMessage, firstEgg), 0 , SAVE_TIME);
+                    timer1.schedule(new AutoSave(clicker, bob, issy, skeeldude, ryonical, firstEgg), 0 , SAVE_TIME);
                     myAutoSave = true;
                 }//ends if
                 else
@@ -267,7 +264,6 @@ public class Buttons extends JFrame
                 }//ends else
                 //for the easteregg
                 firstEgg.check("save");
-                output(clicker, bob, issy, skeeldude, ryonical, messagePanel, jftMessage);
             }//ends actionPerformed
         });//ends jbtSave
         
@@ -276,11 +272,11 @@ public class Buttons extends JFrame
         {
             public void actionPerformed(ActionEvent e)
             {
+                Load load = new Load(clicker, bob, issy, skeeldude, ryonical, firstEgg);
                 load.reader();
                 load.load();
                 //for the easteregg
                 firstEgg.check("load");
-                output(clicker, bob, issy, skeeldude, ryonical, messagePanel, jftMessage);
             }//ends actionPerformed
         });//ends jbtLoad
     }//ends activate
@@ -305,6 +301,25 @@ public class Buttons extends JFrame
         }
         return output;
     }
+    
+    public JButton[] getButtons()
+    {
+        JButton[] buttons = new JButton[13];
+        buttons[0] = jbtAttack;
+        buttons[1] = jbtUpgrade;
+        buttons[2] = jbtUpgradeAll;
+        buttons[3] = jbtBob;
+        buttons[4] = jbtIssy;
+        buttons[5] = jbtSkeeldude;
+        buttons[6] = jbtRyonical;
+        buttons[7] = jbtBoss;
+        buttons[8] = jbtProgress;
+        buttons[9] = jbtDegress;
+        buttons[10] = jbtSave;
+        buttons[11] = jbtAutoSave;
+        buttons[12] = jbtLoad;
+        return buttons;
+    }
         
     /**
     * This will output.
@@ -313,8 +328,7 @@ public class Buttons extends JFrame
     * return none
     * post none
     */
-    public void output(WorldOfClickers clicker, Bob bob, Issy issy, 
-    Skeeldude skeeldude, Ryonical ryonical, MessagePanel messagePanel, JTextField jftMessage)
+    public void output()
     {
         DecimalFormat format = new DecimalFormat("0.#");
         //vars
@@ -342,11 +356,20 @@ public class Buttons extends JFrame
         totalGold = clicker.getTotalGold();
         //calcs the dps
         dps = ((bob.getDamage() + issy.getDamage() + skeeldude.getDamage() + ryonical.getDamage()) * 10);
-        messagePanel.setMessage("The monster has " + format.format((clicker.simplify(monsterHealth, "damage"))) + clicker.getMyType() + " health You have " + format.format((clicker.simplify(totalGold, "gold"))) + 
-        clicker.getMyType() + " gold" + " The next upgrade costs " + damageUpgradeCost + " gold Bob costs " + bobUpgrade + " gold, issy costs " + issyUpgrade +" gold, Skeeldude costs " + skeeldudeUpgrade +
-        " gold, and Ryonical costs " + ryonicalUpgrade + " gold the DPS is " + 
-        format.format(clicker.simplify(dps, "damage")) + clicker.getMyType() + " " + getSave() );
-        jftMessage.requestFocusInWindow();
-        messagePanel.repaint();
+        
+        String[] output = new String [9];
+        output[0] = "The Monster has " + format.format(clicker.simplify(monsterHealth, "damage")) + clicker.getMyType() + " health";
+        output[1] = "You have " + format.format(clicker.simplify(totalGold, "gold")) + clicker.getMyType() + " gold";
+        output[2] = "The next upgrade costs " + damageUpgradeCost;
+        output[3] = "Bob costs " + bobUpgrade;
+        output[4] = "Issy costs " + issyUpgrade;
+        output[5] = "Skeeldude costs " + skeeldudeUpgrade;
+        output[6] = "Ryonical costs " + ryonicalUpgrade;
+        output[7] = "The DPS is " + format.format(clicker.simplify(dps, "damage"));
+        output[8] = getSave();
+        
+        
+        
+        game.refresh(output);
     }//ends output
 }//ends Buttons

@@ -20,23 +20,22 @@ public class WorldOfClickersDriver
     * return none
     * post none
     */
-    public static void main(String [] args)
+    public static void main()
     {
-        final int ATTACKSPEED = 100; //sets the attack speed
+        final int ATTACKSPEED = 100;
         WorldOfClickers clicker = new WorldOfClickers();
         Bob bob = new Bob();
         Issy issy = new Issy();
         Skeeldude skeeldude = new Skeeldude();
         Ryonical ryonical = new Ryonical();
-        Buttons button = new Buttons();
-        MessagePanel messagePanel = new MessagePanel();
-        messagePanel.setBackground(Color.white);
-        JTextField jftMessage = new JTextField(10);
-        EasterEggSecond secondEgg = new EasterEggSecond(clicker, bob, issy, skeeldude, ryonical, messagePanel, jftMessage);
-        EasterEggFirst firstEgg = new  EasterEggFirst(clicker, bob, issy, skeeldude, ryonical, messagePanel, jftMessage, secondEgg);
-        Load load = new Load(clicker, bob, issy, skeeldude, ryonical, messagePanel, jftMessage, firstEgg);
-        button.activate(clicker, bob, issy, skeeldude, ryonical, messagePanel, jftMessage, load, firstEgg, secondEgg);
-        java.util.Timer timer1 = new java.util.Timer();
-        timer1.schedule(new AllyAttack(clicker, bob, issy, skeeldude, ryonical, button, messagePanel, jftMessage), 0 , ATTACKSPEED);
+        EasterEggSecond secondEgg = new EasterEggSecond(clicker, bob, issy, skeeldude, ryonical);
+        EasterEggFirst firstEgg = new  EasterEggFirst(clicker, bob, issy, skeeldude, ryonical, secondEgg);
+        
+        GameScreen game = new GameScreen();
+        Buttons button = new Buttons(clicker, bob, issy, skeeldude, ryonical, firstEgg, game);
+        button.activate();
+        game.showScreen();
+        game.addButtons(button.getButtons());java.util.Timer timer1 = new java.util.Timer();
+        timer1.schedule(new AllyAttack(clicker, bob, issy, skeeldude, ryonical, button), 0 , ATTACKSPEED);
     }//ends main
 }//ends WorldOfClickersDriver

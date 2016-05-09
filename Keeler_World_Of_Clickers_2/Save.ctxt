@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=clicker2\ bob2\ issy2\ skeeldude2\ ryonical2\ messagePanel2\ jftMessage2\ firstEgg2
-comment0.target=Save(WorldOfClickers,\ Bob,\ Issy,\ Skeeldude,\ Ryonical,\ MessagePanel,\ javax.swing.JTextField,\ EasterEggFirst)
+comment0.params=clicker2\ bob2\ issy2\ skeeldude2\ ryonical2\ firstEgg2
+comment0.target=Save(WorldOfClickers,\ Bob,\ Issy,\ Skeeldude,\ Ryonical,\ EasterEggFirst)
 comment0.text=\r\n\ This\ will\ construct\ .\r\n\ pre\ none\r\n\ pram\ none\r\n\ return\ none\r\n\ post\ all\r\n
 comment1.params=
 comment1.target=void\ getStats()

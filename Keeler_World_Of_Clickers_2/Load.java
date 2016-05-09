@@ -30,8 +30,6 @@ public class Load
     Issy issy;
     Skeeldude skeeldude;
     Ryonical ryonical;
-    MessagePanel messagePanel;
-    JTextField jftMessage;
     EasterEggFirst firstEgg;
     /**
      * This will construct.
@@ -42,7 +40,6 @@ public class Load
      */
     public Load(WorldOfClickers clicker2, 
     Bob bob2, Issy issy2, Skeeldude skeeldude2, Ryonical ryonical2,
-    MessagePanel messagePanel2, JTextField jftMessage2,
     EasterEggFirst firstEgg2)
     {
         try
@@ -55,7 +52,7 @@ public class Load
             inFileBool = new Scanner(fileBool);
         }catch(Exception e)
         {
-            System.out.println(e.getMessage());
+            System.out.println(e);
         }
 
         clicker = clicker2;
@@ -63,8 +60,6 @@ public class Load
         issy = issy2;
         skeeldude = skeeldude2;
         ryonical = ryonical2;
-        messagePanel = messagePanel2;
-        jftMessage = jftMessage2;
         firstEgg = firstEgg2;
         mySaveInt = new ArrayList<Integer>();
         mySaveDouble = new ArrayList<Double>();
@@ -109,7 +104,7 @@ public class Load
         }//ends try
         catch(Exception e)
         {
-            System.out.println(e.getMessage());
+            System.out.println(e);
         }//ends catch
     }//ends reader
     

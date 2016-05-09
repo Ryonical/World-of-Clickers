@@ -640,36 +640,4 @@ public class WorldOfClickers extends JFrame
         //normal output
         return amount;
     }//ends simplify
-    
-    /**
-    * This will let you go back
-    * pre none
-    * pram none
-    * return none
-    * post none
-    */
-    public char symbol(double amount)
-    {
-        int newAmount;
-        if(amount < MIN_FIRST)
-        {
-            //shows that it is in the hundreds or less
-            myType = ' ';
-        }//ends if
-        else if(amount < MAX_FIRST)
-        {
-            //shows that it is in the thousends
-            
-            myType = 'K';
-        }//ends else if
-        else if(amount < MAX_SECOND)
-        {
-            //shows that it is in the milions
-            
-            myType = 'M';
-        }//ends else if
-        
-        //normal output
-        return myType;
-    }//ends simplify
 }//ends WorldOfClickers

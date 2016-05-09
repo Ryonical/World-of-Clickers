@@ -20,8 +20,6 @@ public class EasterEggSecond extends EasterEgg
     Issy issy;
     Skeeldude skeeldude;
     Ryonical ryonical;
-    MessagePanel messagePanel;
-    JTextField jftMessage;
     private boolean myHasGone;
     private ArrayList <String> mySave;
     private ArrayList <String> myInput;
@@ -35,8 +33,7 @@ public class EasterEggSecond extends EasterEgg
     * post none
     */
     public EasterEggSecond(WorldOfClickers clicker2, 
-    Bob bob2, Issy issy2, Skeeldude skeeldude2, Ryonical ryonical2,
-    MessagePanel messagePanel2, JTextField jftMessage2)
+    Bob bob2, Issy issy2, Skeeldude skeeldude2, Ryonical ryonical2)
     {
         myHasGone = false;
         clicker = clicker2;
@@ -44,8 +41,6 @@ public class EasterEggSecond extends EasterEgg
         issy = issy2;
         skeeldude = skeeldude2;
         ryonical = ryonical2;
-        messagePanel = messagePanel2;
-        jftMessage = jftMessage2;
         mySave = new ArrayList<String>();
         myInput = new ArrayList<String>();
         try
@@ -119,30 +114,6 @@ public class EasterEggSecond extends EasterEgg
                 i = 0;
                 numSequence = 0;
             }//ends if
-            //this is output
-            double myMonsterHealth = 5;
-            int myTotalGold;
-            int myDamageUpgradeCost;
-            int myBobUpgrade;
-            int myissyUpgrade;
-            int myRyonicalUpgrade;
-            //gets monster health
-            myMonsterHealth = clicker.getMonsterHealth();
-            //gets costs
-            myDamageUpgradeCost = clicker.getDamageUpgradeCost();
-            //gets bob costs
-            myBobUpgrade = bob.getCost();
-            //gets issy costs
-            myissyUpgrade = issy.getCost();
-            //gets ryonical costs
-            myRyonicalUpgrade = ryonical.getCost();
-            //gets gold
-            myTotalGold = clicker.getTotalGold();
-            messagePanel.setMessage("The monster has " + myMonsterHealth + " health You have " + myTotalGold + " gold" + 
-            " The next upgrade costs " + myDamageUpgradeCost + " gold Bob costs " + myBobUpgrade + " gold, issy costs " +
-            myissyUpgrade + " gold, and Ryonical costs " + myRyonicalUpgrade + " gold.");
-            jftMessage.requestFocusInWindow();
-            messagePanel.repaint();
         }//ends if
     }//ends check
     
