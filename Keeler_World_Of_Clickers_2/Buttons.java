@@ -365,7 +365,7 @@ public class Buttons extends JFrame
         output[4] = "Issy costs " + format.format(clicker.simplify(issyUpgrade)) + clicker.getMyType() + " gold";
         output[5] = "Skeeldude costs " + format.format(clicker.simplify(skeeldudeUpgrade)) + clicker.getMyType() + " gold";
         output[6] = "Ryonical costs " + format.format(clicker.simplify(ryonicalUpgrade)) + clicker.getMyType() + " gold";
-        output[7] = "The DPS is " + format.format(clicker.simplify(dps) + clicker.getMyType());
+        output[7] = "The DPS is " + format.format(clicker.simplify(dps)) + clicker.getMyType();
         output[8] = getSave();
         
         
