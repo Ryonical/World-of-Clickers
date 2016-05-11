@@ -358,14 +358,14 @@ public class Buttons extends JFrame
         dps = ((bob.getDamage() + issy.getDamage() + skeeldude.getDamage() + ryonical.getDamage()) * 10);
         
         String[] output = new String [9];
-        output[0] = "The Monster has " + format.format(clicker.simplify(monsterHealth, "damage")) + clicker.getMyType() + " health";
-        output[1] = "You have " + format.format(clicker.simplify(totalGold, "gold")) + clicker.getMyType() + " gold";
-        output[2] = "The next upgrade costs " + damageUpgradeCost;
-        output[3] = "Bob costs " + bobUpgrade;
-        output[4] = "Issy costs " + issyUpgrade;
-        output[5] = "Skeeldude costs " + skeeldudeUpgrade;
-        output[6] = "Ryonical costs " + ryonicalUpgrade;
-        output[7] = "The DPS is " + format.format(clicker.simplify(dps, "damage"));
+        output[0] = "The Monster has " + format.format(clicker.simplify(monsterHealth)) + clicker.getMyType() + " health";
+        output[1] = "You have " + format.format(clicker.simplify(totalGold)) + clicker.getMyType() + " gold";
+        output[2] = "The next upgrade costs " + format.format(clicker.simplify(damageUpgradeCost)) + clicker.getMyType() + " gold";
+        output[3] = "Bob costs " + format.format(clicker.simplify(bobUpgrade)) + clicker.getMyType() + " gold";
+        output[4] = "Issy costs " + format.format(clicker.simplify(issyUpgrade)) + clicker.getMyType() + " gold";
+        output[5] = "Skeeldude costs " + format.format(clicker.simplify(skeeldudeUpgrade)) + clicker.getMyType() + " gold";
+        output[6] = "Ryonical costs " + format.format(clicker.simplify(ryonicalUpgrade)) + clicker.getMyType() + " gold";
+        output[7] = "The DPS is " + format.format(clicker.simplify(dps) + clicker.getMyType());
         output[8] = getSave();
         
         

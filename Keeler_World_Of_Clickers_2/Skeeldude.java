@@ -125,7 +125,7 @@ public class Skeeldude implements Ally
              {
                  //this is so it starts at the assigned dps
                  myFirst = false;
-                 myDamage =(100.0 / 10);//this is how much damage 
+                 myDamage =(425.0 / 10);//this is how much damage 
                  //it starts at I want 5 dps and it attacks 10 times a second
              }
              else

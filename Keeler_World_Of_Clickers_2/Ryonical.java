@@ -23,7 +23,7 @@ public class Ryonical implements Ally
     public Ryonical()
     {
         myDamage = 0;
-        myCost = 25000;//this is how much it costs at the begining
+        myCost = 75000;//this is how much it costs at the begining
         myFirst = true;
     }//ends constructer
     
@@ -125,7 +125,7 @@ public class Ryonical implements Ally
              {
                  //this is so it starts at the assigned dps
                  myFirst = false;
-                 myDamage =(1000.0 / 10);//this is how much damage 
+                 myDamage =(12000.0 / 10);//this is how much damage 
                  //it starts at I want 5 dps and it attacks 10 times a second
              }
              else

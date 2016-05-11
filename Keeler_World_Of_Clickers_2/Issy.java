@@ -125,7 +125,7 @@ public class Issy implements Ally
              {
                  //this is so it starts at the assigned dps
                  myFirst = false;
-                 myDamage =(20.0 / 10);//this is how much damage 
+                 myDamage =(85.0 / 10);//this is how much damage 
                  //it starts at I want 20 dps and it attacks 10 times a second
              }
              else

@@ -72,7 +72,7 @@ public class AutoSave extends TimerTask
     {
         try
         {
-            fileInt = new FileWriter(new File("saveInt.txt"), false);
+            fileInt = new FileWriter(new File("saveInt.txt"));
             fileDouble = new FileWriter("saveDouble.txt");
             fileBool = new FileWriter("saveBool.txt");
         }catch(Exception e)

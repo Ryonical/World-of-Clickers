@@ -607,9 +607,8 @@ public class WorldOfClickers extends JFrame
     * return none
     * post none
     */
-    public double simplify(double amount, String returnType)
+    public double simplify(double amount)
     {
-        int newAmount;
         if(amount < MIN_FIRST)
         {
             //shows that it is in the hundreds or less
@@ -631,13 +630,7 @@ public class WorldOfClickers extends JFrame
             amount /= ROUND;
             myType = 'M';
         }//ends else if
-        //will output not as decimal
-        if(!returnType.equals("damage"))
-        {
-            newAmount = (int)amount;
-            return newAmount;
-        }//ends if
-        //normal output
+        //output
         return amount;
     }//ends simplify
 }//ends WorldOfClickers
