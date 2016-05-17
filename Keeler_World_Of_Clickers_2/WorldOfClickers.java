@@ -1,9 +1,9 @@
 /*
- *1 Integer && Double in Load reader() done
+ *1 Integer & Double in Load reader() done
  *2 5 relational operaters (== in death, <= in death, >= in damageUpgrade,
- * != in attack, && in bossFight) done
- *3 if else in attack done
- *4 all while loop in upgrade done
+ * > in TheBoss run(), && in Buttons jbtBoss) done
+ *3 if else in damageUpgrade() done
+ *4 all while loop in damageUpgradeAll done
  *5 1 interface 3 classes Ally done
  *6 interaction between classes all over done
  *7 inharadence done
@@ -617,20 +617,27 @@ public class WorldOfClickers extends JFrame
         else if(amount < MAX_FIRST)
         {
             //shows that it is in the thousends
-            amount = ((int)(amount * CHANGE_DECIMAL) / CHANGE_DECIMAL);
+            amount = ((int)(amount * CHANGE_DECIMAL) / CHANGE_DECIMAL);//this cuts off exess numbers
             amount = (int)(amount / (MIN_FIRST / ROUND));
-            amount /= ROUND;
-            myType = 'K';
+            amount /= ROUND;//this rounds it
+            myType = 'K';//this shows how much extra you have
         }//ends else if
         else if(amount < MAX_SECOND)
         {
             //shows that it is in the milions
-            amount = ((int)(amount * CHANGE_DECIMAL) / CHANGE_DECIMAL);
-            amount = (int)(amount / (MAX_FIRST / ROUND));
-            amount /= ROUND;
-            myType = 'M';
+            amount = ((long)(amount * CHANGE_DECIMAL) / CHANGE_DECIMAL);//this cuts off exess numbers
+            amount = (long)(amount / (MAX_FIRST / ROUND));//this brings the num
+            amount /= ROUND;//this rounds it
+            myType = 'M';//this shows how much extra you have
         }//ends else if
-        //output
+        else
+        {
+            //shows that it is in the bilions
+            amount = ((long)(amount * CHANGE_DECIMAL) / CHANGE_DECIMAL);//this cuts off exess numbers
+            amount = (long)(amount / (MAX_SECOND / ROUND));//this brings the num
+            amount /= ROUND;//this rounds it
+            myType = 'B';//this shows how much extra you have
+        }//ends else
         return amount;
     }//ends simplify
 }//ends WorldOfClickers

@@ -172,5 +172,7 @@ public class Load
         countBool++;
         ryonical.setFirst(mySaveBool.get(countBool));
         countBool++;
+        firstEgg.setHasGone(mySaveBool.get(countBool));
+        countBool++;
     }//ends load
 }//ends Save

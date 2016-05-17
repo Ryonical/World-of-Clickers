@@ -139,6 +139,18 @@ public class EasterEggFirst extends EasterEgg
     }//ends ability
     
     /**
+    * This will set myHasGone.
+    * pre none
+    * pram none
+    * return none
+    * post myHasGone
+    */
+    public void setHasGone(boolean gone)
+    {
+        myHasGone = gone;
+    }//ends setHasGone
+    
+    /**
     * This will get myHasGone.
     * pre none
     * pram none

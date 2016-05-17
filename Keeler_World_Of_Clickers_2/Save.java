@@ -95,6 +95,7 @@ public class Save
         mySaveBool.add(Boolean.toString(issy.getFirst()));
         mySaveBool.add(Boolean.toString(skeeldude.getFirst()));
         mySaveBool.add(Boolean.toString(ryonical.getFirst()));
+        mySaveBool.add(Boolean.toString(firstEgg.getHasGone()));
     }//ends getStats
     
     /**
