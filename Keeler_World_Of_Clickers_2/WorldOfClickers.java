@@ -31,6 +31,9 @@ public class WorldOfClickers extends JFrame
     public final double DAMAGE_INCREASE = 1.23;//used to upgrade damage
     public final double HIGH_DAMAGE_INCREASE = 5;//used to upgrade damage
     public final double UPGRADE_COST_INCREASE = 1.25;//this is how much more gold to upgrade damage
+    public final int RECOMBOBULATE_LEVEL = 10;
+    public final int MISS = 1;//this is your miss chance 5%
+    public final int CRIT = 3;//this is your crit chance 10%
     //gold finals
     public final double PROGRESS_GOLD = 1.5;//this is how much mor you make when you go to the next level
     public final int UPGRADE_COST_IF = 3;//this will be used for if's
@@ -50,10 +53,15 @@ public class WorldOfClickers extends JFrame
     private double myMonsterHealth;//this is the monster health
     private int myBaseMonsterHealth;//this is the health at reset
 
+    //other
+    private int myLevel;
     
     //this is damage
     private int myAttackDamage;//this is attack damage
     private double myDamageUpgrade;//this will upgrade damage
+    private double myRecombobulateBonus;//this is the amount you will get
+    private double myRecombobulateDamage;//this is the restart bonus's damage
+    public double myRecombobulateGain;
      //ally vars
     private boolean myHaveBob;
     private boolean myHaveIssy;
@@ -87,9 +95,15 @@ public class WorldOfClickers extends JFrame
         myMonsterHealth = STARTING_HEALTH;
         myBaseMonsterHealth = STARTING_HEALTH;
         
+        //other
+        myLevel = 1;
+        
         //attack damage
         myAttackDamage = 1;
         myDamageUpgrade = 1;
+        myRecombobulateBonus = 0;
+        myRecombobulateDamage = 1;
+        myRecombobulateGain = .0;
             //ally vars
         myHaveBob = false;
         myHaveIssy = false;
@@ -104,7 +118,79 @@ public class WorldOfClickers extends JFrame
         myBossFight = false;
         myBossKill = false;
         myMonsterKills = 0;
-    }//ends constructer
+    }//ends constructer\
+    
+    /**
+    * This will set myLevel.
+    * pre none
+    * pram none
+    * return none
+    * post myLevel
+    */
+    public void setLevel(int level)
+    {
+        myLevel = level;
+    }//ends setLevel
+    
+    /**
+    * This will get myLevel.
+    * pre none
+    * pram none
+    * return myLevel
+    * post none
+    */
+    public int getLevel()
+    {
+        return myLevel;
+    }//ends getLevel
+    
+    /**
+    * This will set myRecombobulateDamage.
+    * pre none
+    * pram none
+    * return none
+    * post myRecombobulateDamage
+    */
+    public void setRecombobulateDamage(double recombobulateDamage)
+    {
+        myRecombobulateDamage = recombobulateDamage;
+    }//ends setRecombobulateDamage
+    
+    /**
+    * This will return myRecombobulateDamage.
+    * pre none
+    * pram none
+    * return myRecombobulateDamage
+    * post none
+    */
+    public double getRecombobulateDamage()
+    {
+        return myRecombobulateDamage;
+    }//ends getRecombobulateDamage
+    
+    /**
+    * This will set myRecombobulateBonus.
+    * pre none
+    * pram none
+    * return none
+    * post myRecombobulateBonus
+    */
+    public void setRecombobulateBonus(double recombobulateBonus)
+    {
+        myRecombobulateBonus = recombobulateBonus;
+    }//ends setRecombobulateBonus
+    
+    /**
+    * This will return myRecombobulateBonus.
+    * pre none
+    * pram none
+    * return myRecombobulateBonus
+    * post none
+    */
+    public double getRecombobulateBonus()
+    {
+        return myRecombobulateBonus;
+    }//ends myRecombobulateDamage
     
     /**
     * This will set myAttackDamage.
@@ -116,7 +202,7 @@ public class WorldOfClickers extends JFrame
     public void setAttackDamage(int attackDamage)
     {
         myAttackDamage = attackDamage;
-    }//ends myAttackDamage
+    }//ends setAttackDamage
     
     /**
     * This will return myAttackDamage.
@@ -128,7 +214,7 @@ public class WorldOfClickers extends JFrame
     public int getAttackDamage()
     {
         return myAttackDamage;
-    }//ends myAttackDamage
+    }//ends getAttackDamage
     
     /**
     * This will set myDamageUpgrade.
@@ -140,7 +226,7 @@ public class WorldOfClickers extends JFrame
     public void setDamageUpgrade(double damageIncrece)
     {
         myDamageUpgrade = damageIncrece;
-    }//ends myAttackDamage
+    }//ends setDamageUpgrade
     
     /**
     * This will return myDamageUpgrade.
@@ -152,7 +238,7 @@ public class WorldOfClickers extends JFrame
     public double getDamageUpgrade()
     {
         return myDamageUpgrade;
-    }//ends myAttackDamage
+    }//ends getDamageUpgrade
     
     /**
     * This will set myDamageUpgrade.
@@ -164,7 +250,7 @@ public class WorldOfClickers extends JFrame
     public void setDamageUpgradeCost(int damageCost)
     {
         myDamageUpgradeCost = damageCost;
-    }//ends myAttackDamage
+    }//ends setDamageUpgradeCost
     
     /**
     * This will return myDamageUpgrade.
@@ -176,7 +262,7 @@ public class WorldOfClickers extends JFrame
     public int getDamageUpgradeCost()
     {
         return myDamageUpgradeCost;
-    }//ends myAttackDamage
+    }//ends getDamageUpgradeCost
     
     /**
     * This will return myMonsterKills.
@@ -341,7 +427,7 @@ public class WorldOfClickers extends JFrame
     * pre none
     * pram none
     * return none
-    * post none
+    * post Issy
     */
     public void setIssy(boolean issy)
     {
@@ -365,12 +451,12 @@ public class WorldOfClickers extends JFrame
     * pre none
     * pram none
     * return none
-    * post none
+    * post Skeeldude
     */
     public void setSkeeldude(boolean skeeldude)
     {
         myHaveSkeeldude = skeeldude;
-    }//ends setIsst
+    }//ends setSkeeldude
     
     /**
     * This will set gold after upgrading.
@@ -382,14 +468,14 @@ public class WorldOfClickers extends JFrame
     public boolean getSkeeldude()
     {
         return myHaveSkeeldude;
-    }//ends getIssy
+    }//ends getSkeeldude
     
     /**
     * This will set gold after upgrading.
     * pre none
     * pram none
     * return none
-    * post none
+    * post Ryonical
     */
     public void setRyonical(boolean ryonical)
     {
@@ -436,14 +522,40 @@ public class WorldOfClickers extends JFrame
     * This will attack
     * pre none
     * pram none
-    * return none
-    * post myUserInput
+    * return myMonsterHealth
+    * post myMonsterHealth
     */
     public double attack()
     {
-        myMonsterHealth -= myAttackDamage;
+        //to get a number between 1 and 20
+        int rand = (int)(Math.random() * 20 + 1);
+        //has a 1/20 or 5% miss chance
+        if(rand > MISS)
+        {
+            //deals damage
+            myMonsterHealth -= myAttackDamage * myRecombobulateDamage;
+            //10% crit chance
+            if(rand <= CRIT)
+            {
+                crit();
+            }//ends if
+        }//ends if
+        
         death(myMonsterHealth);
         return myMonsterHealth;
+    }//ends attack
+    
+    /**
+    * This will critical hit
+    * pre none
+    * pram none
+    * return none
+    * post myMonsterHealth
+    */
+    public void crit()
+    {
+        //will double damage if called
+        myMonsterHealth -= myAttackDamage;
     }//ends attack
     
     /**
@@ -559,6 +671,7 @@ public class WorldOfClickers extends JFrame
         if(myBossKill == true)
         {
             myBossKill = false;
+            myLevel++;
             if(myGoldGain <= UPGRADE_COST_IF)
             {
                myGoldGain++;
@@ -569,6 +682,14 @@ public class WorldOfClickers extends JFrame
             }//ends else
             myMonsterKills = 0;
             myBaseMonsterHealth *= 2;
+            if(myLevel % RECOMBOBULATE_LEVEL == 0)
+            {
+                myRecombobulateGain += .1;
+            }//ends if
+            if(myLevel >= RECOMBOBULATE_LEVEL)
+            {
+                myRecombobulateBonus += myRecombobulateGain;
+            }
         }//ends if
     }//ends progress
     
@@ -584,6 +705,7 @@ public class WorldOfClickers extends JFrame
         if(myBaseMonsterHealth > STARTING_HEALTH)
         {
             myBossKill = true;
+            myLevel--;
             if(myGoldGain <= UPGRADE_COST_IF)
             {
                 if(myGoldGain > 1)
@@ -597,8 +719,65 @@ public class WorldOfClickers extends JFrame
             }//ends else
             myMonsterKills = 5;
             myBaseMonsterHealth /= 2;
+            if(myLevel % RECOMBOBULATE_LEVEL == 0)
+            {
+                myRecombobulateGain -= .1;
+            }//ends if
+            if(myLevel <= 9)
+            {
+                myRecombobulateBonus = 0.0;
+            }//ends if
+            if(myLevel == 10)
+            {
+                myRecombobulateBonus = 0.1;
+            }//ends if
+            if(myLevel >= RECOMBOBULATE_LEVEL)
+            {
+                myRecombobulateBonus -= myRecombobulateGain;
+            }
         }//ends if
     }//ends degress
+    
+    /**
+    * This will let you recombobulate
+    * pre none
+    * pram none
+    * return none
+    * post myBaseMonsterHealth, myGoldGain
+    */
+    public void recombobulate()
+    {
+        //adds recombobulate
+        myRecombobulateDamage += myRecombobulateBonus;
+        myRecombobulateBonus = 0;
+        myRecombobulateGain = .0;
+        
+        //health reset
+        myMonsterHealth = STARTING_HEALTH;
+        myBaseMonsterHealth = STARTING_HEALTH;
+        
+        //other reset
+        myLevel = 1;
+        
+        //damage reset
+        myAttackDamage = 1;
+        myDamageUpgrade = 1;
+        //allys reset
+        myHaveBob = false;
+        myHaveIssy = false;
+        myHaveSkeeldude = false;
+        myHaveRyonical = false;
+        
+        //gold reset
+        myTotalGold = 0;
+        myGoldGain = 1;
+        myDamageUpgradeCost = 5;
+        
+        //boss reset
+        myBossFight = false;
+        myBossKill = false;
+        myMonsterKills = 0;
+    }//ends recombobulate
     
     /**
     * This will let you go back

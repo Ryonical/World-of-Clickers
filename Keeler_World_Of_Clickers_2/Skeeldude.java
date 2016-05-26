@@ -125,16 +125,16 @@ public class Skeeldude implements Ally
              {
                  //this is so it starts at the assigned dps
                  myFirst = false;
-                 myDamage =(425.0 / 10);//this is how much damage 
+                 myDamage =(425.0 / 10) * clicker.getRecombobulateDamage();//this is how much damage 
                  //it starts at I want 5 dps and it attacks 10 times a second
              }
              else
              {
-                 myDamage *= (MY_DAMAGE_INCREACE * ROUND) / ROUND;
+                 myDamage *= ((MY_DAMAGE_INCREACE * ROUND) / ROUND) * clicker.getRecombobulateDamage();
              }
              myCost *= MY_COST_INCREACE;
              clicker.setTotalGold(gold);
              clicker.setSkeeldude(true);
          }//ends if
     }//ends upgrade
-}//ends Ryonical
+}//ends Skeeldude

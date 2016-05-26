@@ -26,6 +26,7 @@ public class Buttons extends JFrame
     private JButton jbtBoss;
     private JButton jbtProgress;
     private JButton jbtDegress;
+    private JButton jbtRecombobulate;
     private JButton jbtSave;
     private JButton jbtAutoSave;
     private JButton jbtLoad;
@@ -71,6 +72,7 @@ public class Buttons extends JFrame
         jbtBoss = new JButton("Boss");
         jbtProgress = new JButton("Progress");
         jbtDegress = new JButton("Go Back");
+        jbtRecombobulate = new JButton("Recombobulate");
         jbtSave = new JButton("Save");
         jbtAutoSave = new JButton("Auto Save");
         jbtLoad = new JButton("Load");
@@ -106,6 +108,7 @@ public class Buttons extends JFrame
         jpButtons.add(jbtBoss);
         jpButtons.add(jbtProgress);
         jpButtons.add(jbtDegress);
+        jpButtons.add(jbtRecombobulate);
         jpButtons.add(jbtSave);
         jpButtons.add(jbtAutoSave);
         jpButtons.add(jbtLoad);
@@ -232,6 +235,29 @@ public class Buttons extends JFrame
             }//ends actionPerformed
         });//ends jbtDegress
         
+        //Recombobulates
+        jbtRecombobulate.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                clicker.recombobulate();
+                bob.setDamage(0);
+                bob.setCost(30);
+                bob.setFirst(true);
+                issy.setDamage(0);
+                issy.setCost(500);
+                issy.setFirst(true);
+                skeeldude.setDamage(0);
+                skeeldude.setCost(2500);
+                skeeldude.setFirst(true);
+                ryonical.setDamage(0);
+                ryonical.setCost(75000);
+                ryonical.setFirst(true);
+                //for the easteregg
+                firstEgg.check("recombobulate");
+            }//ends actionPerformed
+        });//ends jbtRecombobulate
+        
         //saves
         jbtSave.addActionListener(new ActionListener()
         {
@@ -265,7 +291,7 @@ public class Buttons extends JFrame
                 //for the easteregg
                 firstEgg.check("save");
             }//ends actionPerformed
-        });//ends jbtSave
+        });//ends jbtAutoSave
         
         //loads
         jbtLoad.addActionListener(new ActionListener()
@@ -304,7 +330,7 @@ public class Buttons extends JFrame
     
     public JButton[] getButtons()
     {
-        JButton[] buttons = new JButton[13];
+        JButton[] buttons = new JButton[14];
         buttons[0] = jbtAttack;
         buttons[1] = jbtUpgrade;
         buttons[2] = jbtUpgradeAll;
@@ -315,9 +341,10 @@ public class Buttons extends JFrame
         buttons[7] = jbtBoss;
         buttons[8] = jbtProgress;
         buttons[9] = jbtDegress;
-        buttons[10] = jbtSave;
-        buttons[11] = jbtAutoSave;
-        buttons[12] = jbtLoad;
+        buttons[10] = jbtRecombobulate;
+        buttons[11] = jbtSave;
+        buttons[12] = jbtAutoSave;
+        buttons[13] = jbtLoad;
         return buttons;
     }
         
@@ -357,16 +384,20 @@ public class Buttons extends JFrame
         //calcs the dps
         dps = ((bob.getDamage() + issy.getDamage() + skeeldude.getDamage() + ryonical.getDamage()) * 10);
         
-        String[] output = new String [9];
-        output[0] = "The Monster has " + format.format(clicker.simplify(monsterHealth)) + clicker.getMyType() + " health";
-        output[1] = "You have " + format.format(clicker.simplify(totalGold)) + clicker.getMyType() + " gold";
-        output[2] = "The next upgrade costs " + format.format(clicker.simplify(damageUpgradeCost)) + clicker.getMyType() + " gold";
-        output[3] = "Bob costs " + format.format(clicker.simplify(bobUpgrade)) + clicker.getMyType() + " gold";
-        output[4] = "Issy costs " + format.format(clicker.simplify(issyUpgrade)) + clicker.getMyType() + " gold";
-        output[5] = "Skeeldude costs " + format.format(clicker.simplify(skeeldudeUpgrade)) + clicker.getMyType() + " gold";
-        output[6] = "Ryonical costs " + format.format(clicker.simplify(ryonicalUpgrade)) + clicker.getMyType() + " gold";
-        output[7] = "The DPS is " + format.format(clicker.simplify(dps)) + clicker.getMyType();
-        output[8] = getSave();
+        String[] output = new String [13];
+        output [0] = "You are on level " + clicker.getLevel();
+        output[1] = "The Monster has " + format.format(clicker.simplify(monsterHealth)) + clicker.getMyType() + " health";
+        output[2] = "You have " + format.format(clicker.simplify(totalGold)) + clicker.getMyType() + " gold";
+        output[3] = "The next upgrade costs " + format.format(clicker.simplify(damageUpgradeCost)) + clicker.getMyType() + " gold";
+        output[4] = "Bob costs " + format.format(clicker.simplify(bobUpgrade)) + clicker.getMyType() + " gold";
+        output[5] = "Issy costs " + format.format(clicker.simplify(issyUpgrade)) + clicker.getMyType() + " gold";
+        output[6] = "Skeeldude costs " + format.format(clicker.simplify(skeeldudeUpgrade)) + clicker.getMyType() + " gold";
+        output[7] = "Ryonical costs " + format.format(clicker.simplify(ryonicalUpgrade)) + clicker.getMyType() + " gold";
+        output[8] = "The DPS is " + format.format(clicker.simplify(dps)) + clicker.getMyType();
+        output[9] = "You do " + format.format(clicker.getAttackDamage() * clicker.getRecombobulateDamage()) + " clicking damage";
+        output[10] = "You have a recombobulate multiplyer of " + format.format(clicker.getRecombobulateDamage());
+        output[11] = "You will get " + format.format(clicker.getRecombobulateBonus()) + " for recombobulating";
+        output[12] = getSave();
         
         
         

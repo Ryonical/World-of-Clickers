@@ -20,7 +20,7 @@ public class WorldOfClickersDriver
     * return none
     * post none
     */
-    public static void main()
+    public static void main(String [] args)
     {
         final int ATTACKSPEED = 100;
         WorldOfClickers clicker = new WorldOfClickers();
@@ -28,14 +28,17 @@ public class WorldOfClickersDriver
         Issy issy = new Issy();
         Skeeldude skeeldude = new Skeeldude();
         Ryonical ryonical = new Ryonical();
-        EasterEggSecond secondEgg = new EasterEggSecond(clicker, bob, issy, skeeldude, ryonical);
+        EasterEggThird thirdEgg = new EasterEggThird(clicker, bob, issy, skeeldude, ryonical);
+        EasterEggSecond secondEgg = new EasterEggSecond(clicker, bob, issy, skeeldude, ryonical, thirdEgg);
         EasterEggFirst firstEgg = new  EasterEggFirst(clicker, bob, issy, skeeldude, ryonical, secondEgg);
         
         GameScreen game = new GameScreen();
         Buttons button = new Buttons(clicker, bob, issy, skeeldude, ryonical, firstEgg, game);
         button.activate();
         game.showScreen();
-        game.addButtons(button.getButtons());java.util.Timer timer1 = new java.util.Timer();
+        game.addButtons(button.getButtons());
+        java.util.Timer timer1 = new java.util.Timer();
         timer1.schedule(new AllyAttack(clicker, bob, issy, skeeldude, ryonical, button), 0 , ATTACKSPEED);
+        
     }//ends main
 }//ends WorldOfClickersDriver

@@ -108,7 +108,7 @@ public class Issy implements Ally
     }//ends getCost
     
     /**
-    * This will upgrade Issy.
+    * This will upgrade Skeeldude.
     * pre none
     * pram clicker
     * return none
@@ -125,16 +125,16 @@ public class Issy implements Ally
              {
                  //this is so it starts at the assigned dps
                  myFirst = false;
-                 myDamage =(85.0 / 10);//this is how much damage 
-                 //it starts at I want 20 dps and it attacks 10 times a second
+                 myDamage =(85.0 / 10) * clicker.getRecombobulateDamage();//this is how much damage 
+                 //it starts at I want 5 dps and it attacks 10 times a second
              }
              else
              {
-                 myDamage *= (MY_DAMAGE_INCREACE * ROUND) / ROUND;
+                 myDamage *= ((MY_DAMAGE_INCREACE * ROUND) / ROUND) * clicker.getRecombobulateDamage();
              }
              myCost *= MY_COST_INCREACE;
              clicker.setTotalGold(gold);
              clicker.setIssy(true);
          }//ends if
     }//ends upgrade
-}//ends Ryonical
+}//ends Issy

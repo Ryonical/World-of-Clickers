@@ -125,12 +125,12 @@ public class Ryonical implements Ally
              {
                  //this is so it starts at the assigned dps
                  myFirst = false;
-                 myDamage =(12000.0 / 10);//this is how much damage 
+                 myDamage =(12000.0 / 10) * clicker.getRecombobulateDamage();//this is how much damage 
                  //it starts at I want 5 dps and it attacks 10 times a second
              }
              else
              {
-                 myDamage *= (MY_DAMAGE_INCREACE * ROUND) / ROUND;
+                 myDamage *= ((MY_DAMAGE_INCREACE * ROUND) / ROUND) * clicker.getRecombobulateDamage();
              }
              myCost *= MY_COST_INCREACE;
              clicker.setTotalGold(gold);

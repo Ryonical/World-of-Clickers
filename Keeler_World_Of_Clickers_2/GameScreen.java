@@ -10,6 +10,7 @@ public class GameScreen extends JFrame
     JPanel myButtonPanel;
     private int height;
     private int width;
+    
     /**
     * This will construct.
     * pre none
@@ -21,8 +22,8 @@ public class GameScreen extends JFrame
     {
         super("World of Clickers");
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
-        height = 225;
-        width = 1250;
+        height = 275;
+        width = 1300;
         setSize(width, height);
         setLocation(200, 300);
     }//ends contructer

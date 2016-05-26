@@ -70,6 +70,7 @@ public class Save
     public void getStats()
     {
         //ints
+        mySaveInt.add(Integer.toString(clicker.getLevel()));
         mySaveInt.add(Integer.toString(clicker.getAttackDamage()));
         mySaveInt.add(Integer.toString(clicker.getDamageUpgradeCost()));
         mySaveInt.add(Integer.toString(clicker.getBaseMonsterHealth()));
@@ -82,6 +83,8 @@ public class Save
         //doubles
         mySaveDouble.add(Double.toString(clicker.getDamageUpgrade()));
         mySaveDouble.add(Double.toString(clicker.getMonsterHealth()));
+        mySaveDouble.add(Double.toString(clicker.getRecombobulateDamage()));
+        mySaveDouble.add(Double.toString(clicker.getRecombobulateBonus()));
         mySaveDouble.add(Double.toString(bob.getDamage()));
         mySaveDouble.add(Double.toString(issy.getDamage()));
         mySaveDouble.add(Double.toString(skeeldude.getDamage()));

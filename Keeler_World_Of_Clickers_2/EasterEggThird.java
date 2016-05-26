@@ -6,26 +6,27 @@ import java.util.*;
 import java.lang.Thread;
 
 /**
-* This will be the second easter egg.
+* This will be the third easter egg.
 * 
 * @Ryan Keeler
 * @World Of Clicker
 */
-public class EasterEggSecond extends EasterEgg
+public class EasterEggThird extends EasterEgg
 {
-    public final int GOLD_FOR_NO_DAYS = 0; //this will be how much 
+    public final int ATTACKSPEED = 10; //this will be how much 
     //gold you have if you do the easter egg
     WorldOfClickers clicker;
     Bob bob;
     Issy issy;
     Skeeldude skeeldude;
     Ryonical ryonical;
-    EasterEggThird thirdEgg;
+    java.util.Timer timer2 = new java.util.Timer();
     private boolean myHasGone;
     private ArrayList <String> mySave;
     private ArrayList <String> myInput;
     private File f;
     private Scanner inFile;
+    
     /**
     * This is the constructer.
     * pre none
@@ -33,9 +34,9 @@ public class EasterEggSecond extends EasterEgg
     * return none
     * post none
     */
-    public EasterEggSecond(WorldOfClickers clicker2, 
-    Bob bob2, Issy issy2, Skeeldude skeeldude2, 
-    Ryonical ryonical2, EasterEggThird thirdEgg2)
+    public EasterEggThird(WorldOfClickers clicker2, 
+    Bob bob2, Issy issy2, Skeeldude skeeldude2,
+    Ryonical ryonical2)
     {
         myHasGone = false;
         clicker = clicker2;
@@ -43,7 +44,6 @@ public class EasterEggSecond extends EasterEgg
         issy = issy2;
         skeeldude = skeeldude2;
         ryonical = ryonical2;
-        thirdEgg = thirdEgg2;
         mySave = new ArrayList<String>();
         myInput = new ArrayList<String>();
         try
@@ -118,10 +118,6 @@ public class EasterEggSecond extends EasterEgg
                 numSequence = 0;
             }//ends if
         }//ends if
-        else
-        {
-            thirdEgg.check(nextInput);
-        }//ends else
     }//ends check
     
     /**
@@ -133,8 +129,7 @@ public class EasterEggSecond extends EasterEgg
     */
     public void ability()
     {
-        clicker.setTotalGold(GOLD_FOR_NO_DAYS);
+        timer2.schedule(new FastAllyAttack(clicker, bob, issy, skeeldude, ryonical), 0, ATTACKSPEED);
         myHasGone = true;
-        thirdEgg.read();
     }//ends ability
 }//ends EasterEggFirst

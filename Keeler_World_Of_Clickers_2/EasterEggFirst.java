@@ -6,7 +6,7 @@ import java.util.*;
 import java.lang.Thread;
 
 /**
-* This will be the easter egg.
+* This will be the first easter egg.
 * 
 * @Ryan Keeler
 * @World Of Clicker

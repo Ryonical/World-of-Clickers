@@ -27,6 +27,7 @@ public class Bob implements Ally
         myFirst = true;
     }//ends constructer
     
+    
     /**
     * This will set myDamage.
     * pre none
@@ -107,7 +108,7 @@ public class Bob implements Ally
     }//ends getCost
     
     /**
-    * This will upgrade Bob.
+    * This will upgrade Skeeldude.
     * pre none
     * pram clicker
     * return none
@@ -124,16 +125,16 @@ public class Bob implements Ally
              {
                  //this is so it starts at the assigned dps
                  myFirst = false;
-                 myDamage =(5.0 / 10);//this is how much damage 
+                 myDamage =(5.0 / 10) * clicker.getRecombobulateDamage();//this is how much damage 
                  //it starts at I want 5 dps and it attacks 10 times a second
              }
              else
              {
-                 myDamage *= (MY_DAMAGE_INCREACE * ROUND) / ROUND;
+                 myDamage *= ((MY_DAMAGE_INCREACE * ROUND) / ROUND) * clicker.getRecombobulateDamage();
              }
              myCost *= MY_COST_INCREACE;
              clicker.setTotalGold(gold);
              clicker.setBob(true);
          }//ends if
     }//ends upgrade
-}//ends Ryonical
+}//ends Bob
