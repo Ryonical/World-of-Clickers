@@ -57,8 +57,7 @@ public class WorldOfClickers extends JFrame
     private int myLevel;
     
     //this is damage
-    private int myAttackDamage;//this is attack damage
-    private double myDamageUpgrade;//this will upgrade damage
+    private double myAttackDamage;//this is attack damage
     private double myRecombobulateBonus;//this is the amount you will get
     private double myRecombobulateDamage;//this is the restart bonus's damage
     public double myRecombobulateGain;
@@ -76,7 +75,7 @@ public class WorldOfClickers extends JFrame
     
     //this is boss vars
     private boolean myBossFight;//checks to see if you are in a boss fight
-    private boolean myBossKill;//checks to see if boss was killed
+    private int myBossKill;//checks to see if boss was killed
     private int myMonsterKills;//this will let you fight the boss if you have atleast 5 kills
     
     /**
@@ -100,7 +99,6 @@ public class WorldOfClickers extends JFrame
         
         //attack damage
         myAttackDamage = 1;
-        myDamageUpgrade = 1;
         myRecombobulateBonus = 0;
         myRecombobulateDamage = 1;
         myRecombobulateGain = .0;
@@ -116,7 +114,7 @@ public class WorldOfClickers extends JFrame
         
         //boss
         myBossFight = false;
-        myBossKill = false;
+        myBossKill = 1;
         myMonsterKills = 0;
     }//ends constructer\
     
@@ -199,7 +197,7 @@ public class WorldOfClickers extends JFrame
     * return none
     * post myAttackDamage
     */
-    public void setAttackDamage(int attackDamage)
+    public void setAttackDamage(double attackDamage)
     {
         myAttackDamage = attackDamage;
     }//ends setAttackDamage
@@ -211,34 +209,10 @@ public class WorldOfClickers extends JFrame
     * return myAttackDamage
     * post none
     */
-    public int getAttackDamage()
+    public double getAttackDamage()
     {
         return myAttackDamage;
     }//ends getAttackDamage
-    
-    /**
-    * This will set myDamageUpgrade.
-    * pre none
-    * pram none
-    * return none
-    * post myDamageUpgrade
-    */
-    public void setDamageUpgrade(double damageIncrece)
-    {
-        myDamageUpgrade = damageIncrece;
-    }//ends setDamageUpgrade
-    
-    /**
-    * This will return myDamageUpgrade.
-    * pre none
-    * pram none
-    * return myDamageUpgrade
-    * post none
-    */
-    public double getDamageUpgrade()
-    {
-        return myDamageUpgrade;
-    }//ends getDamageUpgrade
     
     /**
     * This will set myDamageUpgrade.
@@ -501,7 +475,7 @@ public class WorldOfClickers extends JFrame
     * return none
     * post myBossKill
     */
-    public boolean getBossKill()
+    public int getBossKill()
     {
         return myBossKill;
     }//ends getBossKill
@@ -533,7 +507,7 @@ public class WorldOfClickers extends JFrame
         if(rand > MISS)
         {
             //deals damage
-            myMonsterHealth -= myAttackDamage * myRecombobulateDamage;
+            myMonsterHealth -= myAttackDamage;
             //10% crit chance
             if(rand <= CRIT)
             {
@@ -586,7 +560,7 @@ public class WorldOfClickers extends JFrame
             if(myBossFight == true)
             {
                 //to say you have killed the boss
-                myBossKill = true;
+                myBossKill = myLevel + 1;
                 //to say you are no longer in a boss fight
                 myBossFight = false;
             }//ends if
@@ -605,7 +579,6 @@ public class WorldOfClickers extends JFrame
         if(myTotalGold >= myDamageUpgradeCost)
         {
             myTotalGold -= myDamageUpgradeCost;
-            myDamageUpgrade *= DAMAGE_INCREASE;
             //will make it so you alwase get an increase in damage
             if(myAttackDamage <= HIGH_DAMAGE_INCREASE)
             {
@@ -613,7 +586,7 @@ public class WorldOfClickers extends JFrame
             }//ends if
             else
             {
-                myAttackDamage += myDamageUpgrade;
+                myAttackDamage *= DAMAGE_INCREASE;
             }//ends else
             if(myDamageUpgradeCost <= UPGRADE_COST_IF)
             {
@@ -638,7 +611,6 @@ public class WorldOfClickers extends JFrame
         while(myTotalGold >= myDamageUpgradeCost)
         {
             myTotalGold -= myDamageUpgradeCost;
-            myDamageUpgrade *= DAMAGE_INCREASE;
             //will make it so you alwase get an increase in damage
             if(myAttackDamage <= HIGH_DAMAGE_INCREASE)
             {
@@ -646,7 +618,7 @@ public class WorldOfClickers extends JFrame
             }//ends if
             else
             {
-                myAttackDamage += myDamageUpgrade;
+                myAttackDamage *= DAMAGE_INCREASE;
             }//ends else
             if(myDamageUpgradeCost <= UPGRADE_COST_IF)
             {
@@ -668,9 +640,8 @@ public class WorldOfClickers extends JFrame
     */
     public void progress()
     {
-        if(myBossKill == true)
+        if(myBossKill > myLevel)
         {
-            myBossKill = false;
             myLevel++;
             if(myGoldGain <= UPGRADE_COST_IF)
             {
@@ -704,7 +675,6 @@ public class WorldOfClickers extends JFrame
     {
         if(myBaseMonsterHealth > STARTING_HEALTH)
         {
-            myBossKill = true;
             myLevel--;
             if(myGoldGain <= UPGRADE_COST_IF)
             {
@@ -760,8 +730,7 @@ public class WorldOfClickers extends JFrame
         myLevel = 1;
         
         //damage reset
-        myAttackDamage = 1;
-        myDamageUpgrade = 1;
+        myAttackDamage = myRecombobulateDamage;
         //allys reset
         myHaveBob = false;
         myHaveIssy = false;
@@ -775,7 +744,7 @@ public class WorldOfClickers extends JFrame
         
         //boss reset
         myBossFight = false;
-        myBossKill = false;
+        myBossKill = 1;
         myMonsterKills = 0;
     }//ends recombobulate
     

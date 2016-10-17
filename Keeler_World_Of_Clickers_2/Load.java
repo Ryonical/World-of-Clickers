@@ -124,8 +124,6 @@ public class Load
         //the input for ints
         clicker.setLevel(mySaveInt.get(countInt));
         countInt++;
-        clicker.setAttackDamage(mySaveInt.get(countInt));
-        countInt++;
         clicker.setDamageUpgradeCost(mySaveInt.get(countInt));
         countInt++;
         clicker.setBaseHealth(mySaveInt.get(countInt));
@@ -144,9 +142,9 @@ public class Load
         countInt++;
         
         //the input for doubles
-        clicker.setDamageUpgrade(mySaveDouble.get(countDouble));
-        countDouble++;
         clicker.setHealth(mySaveDouble.get(countDouble));
+        countDouble++;
+        clicker.setAttackDamage(mySaveDouble.get(countDouble));
         countDouble++;
         clicker.setRecombobulateDamage(mySaveDouble.get(countDouble));
         countDouble++;

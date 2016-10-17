@@ -130,7 +130,7 @@ public class Skeeldude implements Ally
              }
              else
              {
-                 myDamage *= ((MY_DAMAGE_INCREACE * ROUND) / ROUND) * clicker.getRecombobulateDamage();
+                 myDamage *= ((MY_DAMAGE_INCREACE * ROUND) / ROUND);
              }
              myCost *= MY_COST_INCREACE;
              clicker.setTotalGold(gold);

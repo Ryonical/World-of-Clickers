@@ -63,7 +63,7 @@ public class TheBoss extends TimerTask
             clicker.setBossFight(false);
             timer2.cancel();
         }//ends else
-        if(clicker.getBossKill())
+        if(clicker.getBossKill() > clicker.getLevel())
         {
             timer2.cancel();
         }

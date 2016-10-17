@@ -71,7 +71,6 @@ public class Save
     {
         //ints
         mySaveInt.add(Integer.toString(clicker.getLevel()));
-        mySaveInt.add(Integer.toString(clicker.getAttackDamage()));
         mySaveInt.add(Integer.toString(clicker.getDamageUpgradeCost()));
         mySaveInt.add(Integer.toString(clicker.getBaseMonsterHealth()));
         mySaveInt.add(Integer.toString(clicker.getTotalGold()));
@@ -81,8 +80,8 @@ public class Save
         mySaveInt.add(Integer.toString(skeeldude.getCost()));
         mySaveInt.add(Integer.toString(ryonical.getCost()));
         //doubles
-        mySaveDouble.add(Double.toString(clicker.getDamageUpgrade()));
         mySaveDouble.add(Double.toString(clicker.getMonsterHealth()));
+        mySaveDouble.add(Double.toString(clicker.getAttackDamage()));
         mySaveDouble.add(Double.toString(clicker.getRecombobulateDamage()));
         mySaveDouble.add(Double.toString(clicker.getRecombobulateBonus()));
         mySaveDouble.add(Double.toString(bob.getDamage()));

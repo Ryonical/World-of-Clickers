@@ -10,7 +10,7 @@ import java.io.*;
  * This will be the buttons.
  * 
  * @Ryan Keeler
- * @World Of Dlicker
+ * @World Of Clicker
  */
 public class Buttons extends JFrame
 {
@@ -394,7 +394,7 @@ public class Buttons extends JFrame
         output[6] = "Skeeldude costs " + format.format(clicker.simplify(skeeldudeUpgrade)) + clicker.getMyType() + " gold";
         output[7] = "Ryonical costs " + format.format(clicker.simplify(ryonicalUpgrade)) + clicker.getMyType() + " gold";
         output[8] = "The DPS is " + format.format(clicker.simplify(dps)) + clicker.getMyType();
-        output[9] = "You do " + format.format(clicker.getAttackDamage() * clicker.getRecombobulateDamage()) + " clicking damage";
+        output[9] = "You do " + format.format(clicker.getAttackDamage()) + " clicking damage";
         output[10] = "You have a recombobulate multiplyer of " + format.format(clicker.getRecombobulateDamage());
         output[11] = "You will get " + format.format(clicker.getRecombobulateBonus()) + " for recombobulating";
         output[12] = getSave();
