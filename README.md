@@ -4,7 +4,7 @@ A Java clicker game where monsters endlessly respawn — and power grows without
 
 Overview
 
-World of Clickers 2 is a text-based incremental clicker game built entirely in Java. Players defeat endlessly respawning monsters by attacking manually or recruiting allies who automatically assist in battle. Progress is fueled by a Recombobulate System which acts as a prestige mechaniism allowing players to reset their progress for lasting power boosts and faster growth in future runs.
+World of Clickers 2 is a text-based incremental clicker game built entirely in Java. Players defeat endlessly respawning monsters by attacking manually or recruiting allies who automatically assist in battle. Progress is fueled by a Recombobulate System which acts as a prestige mechanism allowing players to reset their progress for lasting power boosts and faster growth in future runs.
 
 The interface follows a clean, text-based design with buttons for player actions and offers real-time feedback on stats including health and damage. The focus is on responsive gameplay logic and balance rather than visuals, delivering a streamlined and strategic clicker experience.
 
